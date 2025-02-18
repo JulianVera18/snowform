@@ -1,0 +1,55 @@
+snowflake:
+  templates:
+    read: &read
+      database_privileges: [USAGE]
+      schema_privileges: [USAGE]
+      object_privileges:
+        tables: [SELECT]
+        views: [SELECT]
+        functions: [USAGE]
+        procedures: [USAGE]
+    write: &write
+      <<: *read
+      schema_privileges: [CREATE TABLE,CREATE VIEW,CREATE FUNCTION,CREATE PROCEDURE]
+      object_privileges:
+        tables: [INSERT,UPDATE,DELETE,TRUNCATE]
+        stages: [READ,WRITE]
+    full: &full
+      <<: *write
+      database_privileges: [MONITOR,CREATE SCHEMA,CREATE DATABASE ROLE]
+      schema_privileges: [CREATE STAGE,CREATE FILE FORMAT,CREATE SEQUENCE]
+      object_privileges:
+        tables: [REFERENCES]
+        views: [REFERENCES]
+
+    privileges: &base
+      DR_R: *read
+      DR_W: *write
+      DR_F: *full
+
+    admins: &admins
+      roles: [SYSADMIN, ACCOUNTADMIN]
+
+    local_admins: &db_admins
+      roles: [DE_ADMIN, DE_ENGINEER]
+
+  resources:
+    database_roles:
+      DE_GOVERNANCE:                # database
+          AUDIT:                    # schema
+            privileges: *base
+            grant_to:
+              <<: *db_admins
+          MONITORING:
+            privileges: *base
+            grant_to:
+              <<: *db_admins
+      DE_TOOLS:
+          TASKS:
+            privileges: *base
+            grant_to:
+              <<: *db_admins
+          UTILITIES:
+            privileges: *base
+            grant_to:
+              <<: *db_admins

@@ -1,0 +1,32 @@
+snowflake:
+  resources:
+    warehouses:
+      - name: GOVERNOR_WH
+        comment: DE audit/governance warehouse
+        warehouse_size: SMALL
+        min_cluster_count: 1
+        max_cluster_count: 2
+        scaling_policy: STANDARD
+        auto_suspend: 300
+        auto_resume: true
+        statement_timeout_in_seconds: 3600
+
+    databases:
+      - name: GOVERNANCE
+        comment: governance database
+        data_retention_time_in_days: 7
+        task_auto_retry_attempts: 2
+        schemas:
+          - name: AUDIT
+            comment: audit|compliance|gdpr
+            log_level: TRACE
+            trace_level: ALWAYS
+            data_retention_time_in_days: 14
+            suspend_task_after_num_failures: 5
+            task_auto_retry_attempts: 3
+          - name: MONITOR
+            comment: monitoring|logging|alerts|notifications
+            data_retention_time_in_days: 14
+            suspend_task_after_num_failures: 5
+            task_auto_retry_attempts: 3
+

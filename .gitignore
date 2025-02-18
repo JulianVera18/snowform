@@ -1,0 +1,8 @@
+*.terraform*
+*.tfstate
+*.state.*
+*.tfstate.*
+*.backup
+.DS_Store
+MATRIX.md
+ROLE_DESIGN.md

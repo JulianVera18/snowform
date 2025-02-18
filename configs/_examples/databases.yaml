@@ -1,0 +1,8 @@
+snowflake:
+  resources:
+    databases:
+      DE_GOVERNANCE:
+        comment: governance|audit|compliance
+        data_retention_time_in_days: 7
+      DE_TOOLS:
+        comment: tools|shared|functions

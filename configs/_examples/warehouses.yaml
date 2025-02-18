@@ -1,0 +1,22 @@
+snowflake:
+  resources:
+    warehouses:
+      DE_GOVERNOR_WH:
+        comment: DE audit/governance warehouse
+        warehouse_size: SMALL
+        min_cluster_count: 1
+        max_cluster_count: 2
+        scaling_policy: STANDARD
+        auto_suspend: 300
+        auto_resume: true
+        statement_timeout_in_seconds: 3600
+
+      DE_TASKS_WH:
+        comment: DE tasks warehouse
+        warehouse_size: SMALL
+        min_cluster_count: 1
+        max_cluster_count: 3
+        auto_suspend: 300
+        auto_resume: true
+        statement_timeout_in_seconds: 3600
+

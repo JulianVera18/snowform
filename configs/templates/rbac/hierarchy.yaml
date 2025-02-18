@@ -1,0 +1,20 @@
+# --------------------------------
+# name: Snowflake Role Hierarchy
+# owner: admin
+# description: Define parent-child relationships
+# version: 1.0
+# --------------------------------
+
+database:
+  roles: [DBR_ADMIN, DBR_CREATOR, DBR_OPERATOR, DBR_VIEWER]
+  hierarchy:
+    DBR_ADMIN: [DBR_CREATOR, DBR_OPERATOR, DBR_VIEWER]
+    DBR_CREATOR: [DBR_ETL, DBR_SECURITY, DBR_ML]
+    DBR_OPERATOR: [DBR_VIEWER]
+    DBR_VIEWER: []
+schema:
+  roles: [DBR_ETL, DBR_SECURITY, DBR_ML]
+  hierarchy:
+    DBR_ETL: []
+    DBR_SECURITY: []
+    DBR_ML: []

@@ -1,0 +1,15 @@
+snowflake:
+  resources:
+    schemas:
+      DE_GOVERNANCE:
+        AUDIT:
+          comment: audit|compliance|gdpr
+        MONITOR:
+          comment: monitoring|logging|alerts|notifications
+          data_retention_time_in_days: 10
+      DE_TOOLS:
+        TASKS:
+          comment: contains all DE related tasks
+          is_transient: true
+        UTILITIES:
+          comment: Utilities and UDFs
