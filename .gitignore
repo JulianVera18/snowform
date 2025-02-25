@@ -7,3 +7,6 @@ sandbox/*
 .DS_Store
 MATRIX.md
 ROLE_DESIGN.md
+rsa_key.p8
+rsa_key.pem
+rsa_key.pub
