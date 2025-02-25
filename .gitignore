@@ -3,6 +3,7 @@
 *.state.*
 *.tfstate.*
 *.backup
+sandbox/*
 .DS_Store
 MATRIX.md
 ROLE_DESIGN.md
