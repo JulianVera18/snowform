@@ -1,0 +1,20 @@
+snowflake:
+  resources:
+    warehouses:
+      - name: DEV
+        comment: dev warehouse
+      - name: PRD
+        comment: PRD warehouse
+      - name: QAS
+        comment: QAS warehouse
+
+    databases:
+      - name: "01"
+        comment: general purpose governance database
+        schemas:
+          - name: BRONZE
+            comment: bronze data
+          - name: SILVER
+            comment: silver data
+          - name: GOLD
+            comment: gold data

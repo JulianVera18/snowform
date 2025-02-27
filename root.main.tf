@@ -18,12 +18,12 @@ provider "snowflake" {
 
 locals {
   # hardcoded
-  environment = "dev"
+  environment = "DEV"
   ws          = "security"
 
   yaml        = yamldecode(file("${local.environment}.snowflake.yaml"))
   workspace   = coalesce(local.ws, terraform.workspace)
-  env         = coalesce(local.environment, local.yaml.config.environment)
+  env         = coalesce(local.yaml.config.environment, local.environment)
 
   imports = try(yamldecode(file("${var.import_path}")).resources, {})
 }
@@ -34,6 +34,7 @@ module "snowflake" {
   # Snowflake configurations
   environment = local.env
   workspace   = local.workspace
+  db_prefix   = local.yaml.config.db_prefix
   paths = {
     resources = format(local.yaml.config.paths.resources, local.env, local.workspace)
     roles     = format(local.yaml.config.paths.roles,     local.env, local.workspace)

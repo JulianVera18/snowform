@@ -2,7 +2,7 @@ resource "snowflake_schema" "schema" {
   for_each                                      = {for schema in local.schemas: "${schema.database}.${schema.name}" => schema}
 
   # Required
-  database                                      = each.value.database
+  database                                      = "${var.db_prefix}_${var.environment}_${each.value.database}"
   name                                          = each.value.name
 
   # Optional

@@ -2,7 +2,7 @@ resource "snowflake_database" "database" {
   for_each                                       = {for db in var.databases: db.name => db}
 
   #Required
-  name                                           = each.key
+  name                                           = "${var.db_prefix}_${var.environment}_${each.key}"
  
   #Optional
   comment                                        = try(each.value.comment, null)

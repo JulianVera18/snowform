@@ -52,12 +52,16 @@ locals {
 
  module "database" {
    source          = "./databases"
+  environment  = var.environment
+  db_prefix    = var.db_prefix
    databases       = local.databases
  }
 
  module "schema" {
    source          = "./schemas"
    databases       = local.databases
+   environment  = var.environment
+   db_prefix    = var.db_prefix
    depends_on      = [ module.database ]
  }
 

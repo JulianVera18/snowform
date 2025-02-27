@@ -1,3 +1,11 @@
+variable "db_prefix" {
+  type = string
+}
+
+variable "environment" {
+  type = string
+}
+
 variable "databases" {}
 # variable "schemas" {
 #   type = list(object({

@@ -1,6 +1,6 @@
 config:
   version: "1.0.0"
-  environment:  "DEV"          # set by environment variable
+  environment:  "QAS"          # set by environment variable
   workspace:    "security"     # workspace if enabled
   db_prefix:    "BD_AC"        # database prefix
   use_workspace: true
