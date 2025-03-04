@@ -1,0 +1,35 @@
+snowflake:
+  resources:
+    databases:
+      - name: BD_AC_PRD_01
+        comment: general purpose governance database
+        schemas:
+          - name: SC_BRONZE_AS400_BAR
+          - name: SC_BRONZE_AS400_BEC
+          - name: SC_BRONZE_AS400_BPE
+          - name: SC_BRONZE_AS400_HTC
+          - name: SC_BRONZE_E1P_BMX
+          - name: SC_BRONZE_OPE_GLB
+          - name: SC_BRONZE_SNOWF_BUS
+          - name: SC_BRONZE_VENDING_BMX
+          - name: SC_SILVER_BAR_RV
+          - name: SC_SILVER_BAR_BV
+          - name: SC_SILVER_BMX_RV
+          - name: SC_SILVER_BMX_BV
+          - name: SC_SILVER_BPE_RV
+          - name: SC_SILVER_BPE_BV
+          - name: SC_SILVER_BUS_RV
+          - name: SC_SILVER_BUS_BV
+          - name: SC_SILVER_BEC_RV
+          - name: SC_SILVER_BEC_BV
+          - name: SC_SILVER_HTC_RV
+          - name: SC_SILVER_HTC_BV
+          - name: SC_SILVER_GLB_RV
+          - name: SC_SILVER_GLB_BV
+          - name: SC_GOLD_BAR
+          - name: SC_GOLD_BEC
+          - name: SC_GOLD_BMX
+          - name: SC_GOLD_BPE
+          - name: SC_GOLD_BUS
+          - name: SC_GOLD_HTC
+          - name: SC_GOLD_GLB

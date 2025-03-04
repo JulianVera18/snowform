@@ -1,0 +1,9 @@
+snowflake:
+  resources:
+    warehouses:
+      - name: LOADING
+        comment: LOADING warehouse
+      - name: TRANSFORMATION
+        comment: TRANSFORMATION warehouse
+      - name: ANALYTICS
+        comment: ANALYTICS warehouse

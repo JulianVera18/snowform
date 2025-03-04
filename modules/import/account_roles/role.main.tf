@@ -11,8 +11,8 @@ locals {
 
   # ACCOUNT ROLES [from rbac/${workspace}/*]
   # ------------------------
-  hierarchy  = try(yamldecode(file("${path.root}/environments/${var.environment}/workspaces/${var.workspace}/roles/account.role.yaml")), {})
-  privileges = try(yamldecode(file("${path.root}/environments/${var.environment}/workspaces/${var.workspace}/roles/privileges.yaml")), {})
+  hierarchy  = try(yamldecode(file("${path.module}/rbac/${var.workspace}/hierarchy.yaml")), {})
+  privileges = try(yamldecode(file("${path.module}/rbac/${var.workspace}/privileges.yaml")), {})
 
   all_roles      = try(local.hierarchy.roles, {})
   all_privileges = try(local.privileges.privileges, {})

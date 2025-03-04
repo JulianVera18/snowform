@@ -1,0 +1,35 @@
+snowflake:
+  resources:
+    databases:
+      - name: "01"
+        comment: general purpose governance database
+        schemas:
+          - name: BRONZE_AS400_BAR
+          - name: BRONZE_AS400_BEC
+          - name: BRONZE_AS400_BPE
+          - name: BRONZE_AS400_HTC
+          - name: BRONZE_E1P_BMX
+          - name: BRONZE_OPE_GLB
+          - name: BRONZE_SNOWF_BUS
+          - name: BRONZE_VENDING_BMX
+          - name: SILVER_BAR_RV
+          - name: SILVER_BAR_BV
+          - name: SILVER_BMX_RV
+          - name: SILVER_BMX_BV
+          - name: SILVER_BPE_RV
+          - name: SILVER_BPE_BV
+          - name: SILVER_BUS_RV
+          - name: SILVER_BUS_BV
+          - name: SILVER_BEC_RV
+          - name: SILVER_BEC_BV
+          - name: SILVER_HTC_RV
+          - name: SILVER_HTC_BV
+          - name: SILVER_GLB_RV
+          - name: SILVER_GLB_BV
+          - name: GOLD_BAR
+          - name: GOLD_BEC
+          - name: GOLD_BMX
+          - name: GOLD_BPE
+          - name: GOLD_BUS
+          - name: GOLD_HTC
+          - name: GOLD_GLB

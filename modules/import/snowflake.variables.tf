@@ -6,14 +6,6 @@ variable "workspace" {
   type = string
 }
 
-variable "db_prefix" {
-  type = string
-}
-
-variable "wh_prefix" {
-  type = string
-}
-
 variable "paths" {
   type = object({
     resources = optional(string)

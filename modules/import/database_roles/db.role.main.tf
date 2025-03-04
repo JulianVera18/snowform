@@ -17,8 +17,8 @@ locals {
   all_database_roles = flatten([
     for schema in var.schemas: [
       for role_name in keys(local.all_roles): {
-        database = "${var.db_prefix}_${var.environment}_${schema.database}"
-        role     = "SC_${schema.name}_${role_name}"
+        database = schema.database
+        role     = "${schema.name}_${role_name}"
 
       }
     ]
@@ -28,9 +28,9 @@ locals {
     for schema in var.schemas: flatten([
       for role, childs in transpose(local.all_roles): [
         for child in childs: {
-          database = "${var.db_prefix}_${var.environment}_${schema.database}"
-          parent = "SC_${schema.name}_${role}"
-          child  = "SC_${schema.name}_${child}"
+          database = schema.database
+          parent = "${schema.name}_${role}"
+          child  = "${schema.name}_${child}"
         }
       ]
     ])
@@ -39,9 +39,9 @@ locals {
   database_privileges = flatten([
     for schema in var.schemas: flatten([
       for role_name, privs in transpose(local.all_privileges.database): {
-        role = "SC_${schema.name}_${role_name}"
+        role = "${schema.name}_${role_name}"
         privileges = privs
-        database = "${var.db_prefix}_${var.environment}_${schema.database}"
+        database = schema.database
       }
     ])
   ])
@@ -49,10 +49,10 @@ locals {
   schema_privileges = flatten([
     for schema in var.schemas: flatten([
       for role_name, privs in transpose(local.all_privileges.schema): {
-        role = "SC_${schema.name}_${role_name}"
+        role = "${schema.name}_${role_name}"
         privileges = privs
-        database = "${var.db_prefix}_${var.environment}_${schema.database}"
-        schema = "SC_${schema.name}"
+        database = schema.database
+        schema = schema.name
       }
     ])
   ])

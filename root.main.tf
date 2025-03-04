@@ -9,21 +9,22 @@ terraform {
 }
 
 provider "snowflake" {
-  organization_name      = "VUWIMQM"
-  account_name           = "JCA77957"
+  organization_name      = "OGVLZNC"
+  account_name           = "WEA06043"
   user                   = "TERRAFORM"
+  role                   = "SYSADMIN"
   authenticator          = "JWT"
   private_key            = file("C:/Users/Seidor/Downloads/snowform-main/rsa_key.p8")
 }
 
 locals {
   # hardcoded
-  environment = "DEV"
-  ws          = "security"
+  environment =  var.environment
+  ws          = "dwh"
 
   yaml        = yamldecode(file("${local.environment}.snowflake.yaml"))
   workspace   = coalesce(local.ws, terraform.workspace)
-  env         = coalesce(local.yaml.config.environment, local.environment)
+  env         = coalesce(local.environment, local.yaml.config.environment)
 
   imports = try(yamldecode(file("${var.import_path}")).resources, {})
 }
@@ -35,6 +36,7 @@ module "snowflake" {
   environment = local.env
   workspace   = local.workspace
   db_prefix   = local.yaml.config.db_prefix
+  wh_prefix   = local.yaml.config.wh_prefix
   paths = {
     resources = format(local.yaml.config.paths.resources, local.env, local.workspace)
     roles     = format(local.yaml.config.paths.roles,     local.env, local.workspace)

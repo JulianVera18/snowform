@@ -1,8 +1,9 @@
 config:
   version: "1.0.0"
-  environment:  "QAS"          # set by environment variable
+  environment:  "PRD"          # set by environment variable
   workspace:    "security"     # workspace if enabled
   db_prefix:    "BD_AC"        # database prefix
+  wh_prefix:    "WH"           # warehouse prefix
   use_workspace: true
 
   paths:

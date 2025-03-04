@@ -1,5 +1,5 @@
 resource "snowflake_database" "database" {
-  for_each                                       = { for db in var.databases : "${var.db_prefix}_${var.environment}_${db.name}" => db }
+  for_each                                       = {for db in var.databases: db.name => db}
 
   #Required
   name                                           = each.key

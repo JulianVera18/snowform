@@ -1,11 +1,3 @@
-variable "wh_prefix" {
-  type = string
-}
-
-variable "environment" {
-  type = string
-}
-
 # validated at account.variables.tf level
 variable "warehouses" {
   type = list(object({

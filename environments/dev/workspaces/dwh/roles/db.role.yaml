@@ -1,0 +1,39 @@
+# --------------------------------
+# name: Snowflake Role Hierarchy
+# description: Define parent-child relationships
+# --------------------------------
+
+roles:
+  # Tier 1 - granular
+  DB_O:  [DB_W]
+  DB_W: [DB_R]
+  DB_R:   []
+
+privileges:
+  database:
+    USAGE:                [DB_R]
+    MONITOR:              [DB_W]
+    MODIFY:               [DB_W]
+    CREATE DATABASE ROLE: [DB_O]
+    CREATE SCHEMA:        [DB_O]
+
+  schema:
+    USAGE:                                     [DB_R]
+    MONITOR:                                   [DB_W]
+    MODIFY:                                    [DB_W]
+    CREATE TABLE:                              [DB_O]
+    CREATE VIEW:                               [DB_O]
+    CREATE STAGE:                              [DB_O]
+    CREATE PIPE:                               [DB_O]
+    CREATE MASKING POLICY:                     [DB_O]
+    CREATE PASSWORD POLICY:                    [DB_O]
+    CREATE ROW ACCESS POLICY:                  [DB_O]
+    CREATE MODEL:                              [DB_O]
+    CREATE MODEL MONITOR:                      [DB_O]
+    CREATE SNOWFLAKE.ML.CLASSIFICATION:        [DB_O]
+    CREATE SNOWFLAKE.ML.FORECAST:              [DB_O]
+    CREATE SNOWFLAKE.ML.ANOMALY_DETECTION:     [DB_O]
+    CREATE SNOWFLAKE.ML.DOCUMENT_INTELLIGENCE: [DB_O]
+    CREATE NOTEBOOK:                           [DB_O]
+    CREATE PACKAGES POLICY:                    [DB_O]
+    CREATE TAG:                                [DB_O]

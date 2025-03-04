@@ -1,8 +1,9 @@
 config:
   version: "1.0.0"
   environment:  "DEV"          # set by environment variable
-  workspace:    "security"     # workspace if enabled
+  workspace:    "dwh"     # workspace if enabled
   db_prefix:    "BD_AC"        # database prefix
+  wh_prefix:    "WH"           # warehouse prefix 
   use_workspace: true
 
   paths:
@@ -12,7 +13,7 @@ config:
 
   deploy:
     resources:
-      account_roles:  false
+      account_roles:  true
       database_roles: false
       warehouses:     true
       databases:      true

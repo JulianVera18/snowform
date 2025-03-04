@@ -47,23 +47,17 @@ locals {
 
  module "warehouse" {
    source          = "./warehouses"
-  environment  = var.environment
-  wh_prefix    = var.wh_prefix
    warehouses      = local.warehouses
  }
 
  module "database" {
    source          = "./databases"
-  environment  = var.environment
-  db_prefix    = var.db_prefix
    databases       = local.databases
  }
 
  module "schema" {
    source          = "./schemas"
    databases       = local.databases
-   environment  = var.environment
-   db_prefix    = var.db_prefix
    depends_on      = [ module.database ]
  }
 
@@ -72,14 +66,11 @@ locals {
 
    dbroles         = local.dbroles
    schemas         = var.deploy.resources.database_roles ? module.database.schemas : []
-   environment  = var.environment
-   db_prefix    = var.db_prefix
    depends_on      = [ module.database, module.schema ]
  }
 
  module "account_role" {
    source                   = "./account_roles"
-   environment              = var.environment
    workspace                = var.deploy.resources.account_roles ? var.workspace : ""
    depends_on               = [ module.warehouse, module.database ]
  }

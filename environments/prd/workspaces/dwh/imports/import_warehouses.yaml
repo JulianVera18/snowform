@@ -1,0 +1,9 @@
+snowflake:
+  resources:
+    warehouses:
+      - name: WH_LOADING_PRD
+        comment: LOADING warehouse
+      - name: WH_TRANSFORMATION_PRD
+        comment: TRANSFORMATION warehouse
+      - name: WH_ANALYTICS_PRD
+        comment: ANALYTICS warehouse

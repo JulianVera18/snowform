@@ -1,5 +1,5 @@
 resource "snowflake_warehouse" "warehouse" {
-  for_each                                = {for wh in var.warehouses: "${var.wh_prefix}_${wh.name}_${var.environment}" => wh}
+  for_each                                = {for wh in var.warehouses: wh.name => wh}
 
   # Required
   name                                    = each.key
