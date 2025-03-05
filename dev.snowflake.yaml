@@ -14,10 +14,10 @@ config:
   deploy:
     resources:
       account_roles:  true
-      database_roles: false
-      warehouses:     true
-      databases:      true
-      schemas:        true
+      database_roles: true
+      warehouses:     false
+      databases:      false
+      schemas:        false
       grants:         true
 
   validation:

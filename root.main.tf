@@ -12,7 +12,7 @@ provider "snowflake" {
   organization_name      = "OGVLZNC"
   account_name           = "WEA06043"
   user                   = "TERRAFORM"
-  role                   = "SYSADMIN"
+  role                   = "SECURITYADMIN" #SYSADMIN
   authenticator          = "JWT"
   private_key            = file("C:/Users/Seidor/Downloads/snowform-main/rsa_key.p8")
 }
