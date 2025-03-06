@@ -6,6 +6,10 @@ variable "environment" {
   type = string
 }
 
+variable "sc_prefix" {
+  type = string
+}
+
 variable "databases" {}
 # variable "schemas" {
 #   type = list(object({

@@ -14,6 +14,10 @@ variable "wh_prefix" {
   type = string
 }
 
+variable "sc_prefix" {
+  type = string
+}
+
 variable "paths" {
   type = object({
     resources = optional(string)

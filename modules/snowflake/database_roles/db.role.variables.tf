@@ -7,3 +7,7 @@ variable "db_prefix" {
 variable "environment" {
   type = string
 }
+
+variable "sc_prefix" {
+  type = string
+}

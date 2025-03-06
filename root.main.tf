@@ -37,6 +37,7 @@ module "snowflake" {
   workspace   = local.workspace
   db_prefix   = local.yaml.config.db_prefix
   wh_prefix   = local.yaml.config.wh_prefix
+  sc_prefix   = local.yaml.config.sc_prefix
   paths = {
     resources = format(local.yaml.config.paths.resources, local.env, local.workspace)
     roles     = format(local.yaml.config.paths.roles,     local.env, local.workspace)

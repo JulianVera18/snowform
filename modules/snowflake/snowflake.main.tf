@@ -67,6 +67,7 @@ locals {
    databases       = local.databases
    environment  = var.environment
    db_prefix    = var.db_prefix
+   sc_prefix    = var.sc_prefix
    depends_on      = [ module.database ]
  }
 
@@ -77,6 +78,7 @@ locals {
    schemas         = var.deploy.resources.database_roles ? module.database.schemas : []
    environment  = var.environment
    db_prefix    = var.db_prefix
+   sc_prefix    = var.sc_prefix
    depends_on      = [ module.database, module.schema ]
  }
 

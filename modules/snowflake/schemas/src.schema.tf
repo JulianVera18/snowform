@@ -1,9 +1,9 @@
 resource "snowflake_schema" "schema" {
-  for_each                                      = {for schema in local.schemas: "${var.db_prefix}_${var.environment}_${schema.database}.SC_${schema.name}" => schema}
+  for_each                                      = {for schema in local.schemas: "${var.db_prefix}_${var.environment}_${schema.database}.${var.sc_prefix}_${schema.name}" => schema}
 
   # Required
   database                                      = "${var.db_prefix}_${var.environment}_${each.value.database}"
-  name                                          = "SC_${each.value.name}"
+  name                                          = "${var.sc_prefix}_${each.value.name}"
 
   # Optional
   comment                                       = try(each.value.comment, null)
