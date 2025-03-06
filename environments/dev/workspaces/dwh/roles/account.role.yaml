@@ -10,5 +10,9 @@ roles:
   DEVELOPER: [READER]
   READER: []
 
-ownership_roles:
-  DEV: [ADMIN]
+# ownership_roles:
+#   DEV: [ADMIN]
+
+system_roles:
+  TERRAFORM_ADMIN: [ADMIN]
+  SYSADMIN: []

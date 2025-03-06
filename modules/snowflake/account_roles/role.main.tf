@@ -11,12 +11,13 @@ locals {
 
   # ACCOUNT ROLES [from rbac/${workspace}/*]
   # ------------------------
-  hierarchy  = try(yamldecode(file("${path.root}/environments/${var.environment}/workspaces/${var.workspace}/roles/account.role.yaml")), {})
+  hyerarchy  = try(yamldecode(file("${path.root}/environments/${var.environment}/workspaces/${var.workspace}/roles/account.role.yaml")), {})
   privileges = try(yamldecode(file("${path.root}/environments/${var.environment}/workspaces/${var.workspace}/roles/privileges.yaml")), {})
 
-  all_roles      = try(local.hierarchy.roles, {})
+  all_roles      = try(local.hyerarchy.roles, {})
   all_privileges = try(local.privileges.privileges, {})
-  # ownership_roles = try(local.hierarchy.ownership_roles, {})
+  system_roles   = try(local.hyerarchy.system_roles, {})
+  # ownership_roles = try(local.hyerarchy.ownership_roles, {})
 
   grants  = flatten([
     for parent_role, childs in transpose(local.all_roles): [
@@ -27,6 +28,14 @@ locals {
     ]
   ])
 
+  system_grants  = flatten([
+    for parent_role, childs in transpose(local.system_roles): [
+      for child_role in childs: {
+        parent = parent_role
+        child  = child_role
+      }
+    ]
+  ])
   # database_privileges = flatten([
   #   for schema in var.schemas: flatten([
   #     for role_name, privs in transpose(local.all_privileges.database): {
