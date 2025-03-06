@@ -8,4 +8,7 @@
 roles:
   ADMIN: [DEVELOPER]
   DEVELOPER: [READER]
-  READER: [SC_BRONZE_AS400_BAR_DB_R]
+  READER: []
+
+ownership_roles:
+  DEV: [ADMIN]

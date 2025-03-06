@@ -6,6 +6,10 @@ variable "environment" {
   type = string
 }
 
+variable "ownership_role" {
+  type = string
+}
+
 # validated at account.variables.tf level
 variable "warehouses" {
   type = list(object({

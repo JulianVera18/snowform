@@ -49,7 +49,9 @@ locals {
    source          = "./warehouses"
   environment  = var.environment
   wh_prefix    = var.wh_prefix
+  ownership_role = join("", lookup(module.account_role.locals.ownership_roles, var.environment, ["SYSADMIN"]))
    warehouses      = local.warehouses
+   depends_on      = [ module.account_role ]
  }
 
  module "database" {
@@ -57,6 +59,7 @@ locals {
   environment  = var.environment
   db_prefix    = var.db_prefix
    databases       = local.databases
+   depends_on      = [ module.account_role ]
  }
 
  module "schema" {
@@ -81,5 +84,4 @@ locals {
    source                   = "./account_roles"
    environment              = var.environment
    workspace                = var.deploy.resources.account_roles ? var.workspace : ""
-   depends_on               = [ module.warehouse, module.database ]
  }

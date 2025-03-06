@@ -3,7 +3,7 @@ config:
   environment:  "DEV"          # set by environment variable
   workspace:    "dwh"     # workspace if enabled
   db_prefix:    "BD_AC"        # database prefix
-  wh_prefix:    "WH"           # warehouse prefix 
+  wh_prefix:    "WH"           # warehouse prefix
   use_workspace: true
 
   paths:
@@ -15,9 +15,9 @@ config:
     resources:
       account_roles:  true
       database_roles: true
-      warehouses:     false
-      databases:      false
-      schemas:        false
+      warehouses:     true
+      databases:      true
+      schemas:        true
       grants:         true
 
   validation:
