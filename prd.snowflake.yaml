@@ -4,6 +4,7 @@ config:
   workspace:    "security"     # workspace if enabled
   db_prefix:    "BD_AC"        # database prefix
   wh_prefix:    "WH"           # warehouse prefix
+  sc_prefix:    "SC"           # schema prefix
   use_workspace: true
 
   paths:
