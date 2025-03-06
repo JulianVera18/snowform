@@ -16,7 +16,7 @@ locals {
 
   all_roles      = try(local.hierarchy.roles, {})
   all_privileges = try(local.privileges.privileges, {})
-  ownership_roles = try(local.hierarchy.ownership_roles, {})
+  # ownership_roles = try(local.hierarchy.ownership_roles, {})
 
   grants  = flatten([
     for parent_role, childs in transpose(local.all_roles): [

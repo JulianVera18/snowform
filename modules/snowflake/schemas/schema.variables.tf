@@ -10,6 +10,10 @@ variable "sc_prefix" {
   type = string
 }
 
+# variable "ownership_role" {
+#   type = string
+# }
+
 variable "databases" {}
 # variable "schemas" {
 #   type = list(object({

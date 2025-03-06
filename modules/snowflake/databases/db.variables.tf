@@ -6,6 +6,10 @@ variable "environment" {
   type = string
 }
 
+# variable "ownership_role" {
+#   type = string
+# }
+
 variable "databases" {
   type = list(object({
     name                                          = string

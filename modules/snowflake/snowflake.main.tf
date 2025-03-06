@@ -49,7 +49,7 @@ locals {
    source          = "./warehouses"
   environment  = var.environment
   wh_prefix    = var.wh_prefix
-  ownership_role = join("", lookup(module.account_role.locals.ownership_roles, var.environment, ["SYSADMIN"]))
+  # ownership_role = join("", lookup(module.account_role.locals.ownership_roles, var.environment, ["TERRAFORM_ADMIN"]))
    warehouses      = local.warehouses
    depends_on      = [ module.account_role ]
  }
@@ -58,6 +58,7 @@ locals {
    source          = "./databases"
   environment  = var.environment
   db_prefix    = var.db_prefix
+  # ownership_role = join("", lookup(module.account_role.locals.ownership_roles, var.environment, ["TERRAFORM_ADMIN"]))
    databases       = local.databases
    depends_on      = [ module.account_role ]
  }
@@ -68,6 +69,7 @@ locals {
    environment  = var.environment
    db_prefix    = var.db_prefix
    sc_prefix    = var.sc_prefix
+  #  ownership_role = join("", lookup(module.account_role.locals.ownership_roles, var.environment, ["TERRAFORM_ADMIN"]))
    depends_on      = [ module.database ]
  }
 
