@@ -4,10 +4,10 @@
 # --------------------------------
 
 roles:
-  # Tier 1 - granular
-  DB_O:  [DB_W]
-  DB_W: [DB_R]
-  DB_R:   []
+  database:
+    DB_O:  [DB_W]
+    DB_W: [DB_R]
+    DB_R:   []
 
 privileges:
   database:

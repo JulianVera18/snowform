@@ -6,3 +6,4 @@ resource "snowflake_grant_database_role" "grants" {
 
   depends_on                = [snowflake_database_role.role]
 }
+#${var.db_prefix}_${var.environment}_

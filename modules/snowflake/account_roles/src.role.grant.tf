@@ -1,17 +1,26 @@
 resource "snowflake_grant_account_role" "grant_to" {
-  for_each = { for grant in local.grants: "${grant.parent}|${grant.child}" => grant }
+  for_each = { for _, grant in local.account_role_grants: "${grant.role_name}|${grant.parent_role_name}" => grant }
 
-  role_name        = "${var.environment}_${each.value.child}"
-  parent_role_name = "${var.environment}_${each.value.parent}"
+  role_name        = each.value.role_name
+  parent_role_name = each.value.parent_role_name
 
   depends_on = [snowflake_account_role.role]
 }
 
-resource "snowflake_grant_account_role" "grant_to_system" {
-  for_each = { for grant in local.system_grants: "${grant.parent}|${grant.child}" => grant }
+resource "snowflake_grant_database_role" "grant_to" {
+  for_each = { for _, grant in local.db_role_grants: "${grant.account_role}|${var.db_prefix}_${var.environment}_${grant.database}.${grant.db_role}" => grant }
 
-  role_name        = each.value.child
-  parent_role_name = "${var.environment}_${each.value.parent}"
+  database_role_name = "${var.db_prefix}_${var.environment}_${replace(each.value.database, "\"", "")}.${each.value.db_role}"
+  parent_role_name   = each.value.account_role
+
+  depends_on = [snowflake_account_role.role]
+}
+
+resource "snowflake_grant_account_role" "grant_to_system_role" {
+  for_each = { for _, grant in local.system_role_grants: "${grant.role_name}|${grant.parent_role_name}" => grant }
+
+  role_name        = each.value.role_name
+  parent_role_name = each.value.parent_role_name
 
   depends_on = [snowflake_account_role.role]
 }

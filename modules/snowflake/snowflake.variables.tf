@@ -23,6 +23,7 @@ variable "paths" {
     resources = optional(string)
     roles     = optional(string)
     defaults  = optional(string)
+    templates = optional(string)
   })
 }
 
@@ -35,6 +36,7 @@ variable "deploy" {
       account_roles  = optional(bool)
       database_roles = optional(bool)
       grants         = optional(bool)
+      transfer_ownership = optional(bool)
     })
   })
 }

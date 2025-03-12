@@ -8,53 +8,38 @@ terraform {
 }
 
 locals {
-
-  # ACCOUNT ROLES [from rbac/${workspace}/*]
-  # ------------------------
-  hyerarchy  = try(yamldecode(file("${path.root}/environments/${var.environment}/workspaces/${var.workspace}/roles/account.role.yaml")), {})
-  privileges = try(yamldecode(file("${path.root}/environments/${var.environment}/workspaces/${var.workspace}/roles/privileges.yaml")), {})
-
-  all_roles      = try(local.hyerarchy.roles, {})
-  all_privileges = try(local.privileges.privileges, {})
-  system_roles   = try(local.hyerarchy.system_roles, {})
-  # ownership_roles = try(local.hyerarchy.ownership_roles, {})
-
-  grants  = flatten([
-    for parent_role, childs in transpose(local.all_roles): [
-      for child_role in childs: {
-        parent = parent_role
-        child  = child_role
+  account_role_grants = try(flatten([
+    for role in var.roles.account: [
+      for parent_role in try(role.account, []): {
+        role_name = role.name
+        parent_role_name = parent_role
       }
     ]
-  ])
+  ]), [])
 
-  system_grants  = flatten([
-    for parent_role, childs in transpose(local.system_roles): [
-      for child_role in childs: {
-        parent = parent_role
-        child  = child_role
+  db_role_grants = try(flatten([
+    for role in var.roles.account: [
+      for db_name, db_roles in try(role.database, {}): [
+        for db_role in db_roles: {
+          account_role = role.name
+          database     = db_name
+          db_role      = db_role
+          db_role_fqn  = "\"${db_name}\".\"${db_role}\""
+        }
+      ]
+    ]
+  ]), [])
+
+
+  system_role_grants = try(flatten([
+    for role in var.roles.system_role: [
+      for parent_role in try(role.account, []): {
+        role_name = role.name
+        parent_role_name = parent_role
       }
     ]
-  ])
-  # database_privileges = flatten([
-  #   for schema in var.schemas: flatten([
-  #     for role_name, privs in transpose(local.all_privileges.database): {
-  #       role = "${schema.name}_${role_name}"
-  #       privileges = privs
-  #       database = schema.database
-  #     }
-  #   ])
-  # ])
-  #
-  # schema_privileges = flatten([
-  #   for schema in var.schemas: flatten([
-  #     for role_name, privs in transpose(local.all_privileges.schema): {
-  #       role = "${schema.name}_${role_name}"
-  #       privileges = privs
-  #       database = schema.database
-  #       schema = schema.name
-  #     }
-  #   ])
-  # ])
+  ]), [])
+
+  ownership_role = element(lookup(var.roles.ownership_roles, var.environment, []), 0)
+
 }
-

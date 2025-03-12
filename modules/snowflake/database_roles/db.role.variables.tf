@@ -1,4 +1,3 @@
-variable "dbroles" {}
 variable "schemas" {}
 variable "db_prefix" {
   type = string
@@ -11,3 +10,6 @@ variable "environment" {
 variable "sc_prefix" {
   type = string
 }
+
+variable "roles" {}
+variable "privileges" {}

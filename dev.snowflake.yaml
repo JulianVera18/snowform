@@ -11,6 +11,7 @@ config:
     resources: "environments/%s/workspaces/%s/resources"       # dev, security
     roles:     "environments/%s/workspaces/%s/roles"           # dev, security
     defaults:  "environments/%s/workspaces/%s/defaults"        # dev, security
+    templates: "environments/%s/workspaces/%s/templates"       # dev, security
 
   deploy:
     resources:
@@ -20,13 +21,14 @@ config:
       databases:      true
       schemas:        true
       grants:         true
+      transfer_ownership: true
 
   validation:
     allowed_environments: []
     allowed_workspaces: []
 
   naming:
-    enabled: true
+    enabled: false
     patterns:
       warehouses: "^[A-Z][A-Z0-9_]{3,}_WH$"
       databases:  "^BD_AC_(DEV|QAS|PROD)_\\d{2}$"

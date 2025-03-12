@@ -10,8 +10,19 @@
 #   }
 # }
 
-output "schemas" {
-  value = flatten([
-    for db in var.databases[*]: [for schema in lookup(db, "schemas"): merge(schema, { "database" = db.name })]
-  ])
+output "defaults" {
+  value = var.defaults
+}
+
+output "databases" {
+  description = "Mapa de bases de datos creadas, con su nombre, id, comentario y demás atributos relevantes"
+  value = {
+    for key, db in snowflake_database.database :
+    key => {
+      name         = db.name
+      id           = db.id
+      comment      = db.comment
+      is_transient = db.is_transient
+    }
+  }
 }

@@ -8,23 +8,21 @@ terraform {
 }
 
 locals {
-
   # database roles (from templates)
   # ------------------------
-  all_roles      = try(var.dbroles.roles, {})
-  all_privileges = try(var.dbroles.privileges, {})
+  all_roles      = try(var.roles.database, {})
+  all_privileges = try(var.privileges, {})
 
-  all_database_roles = flatten([
+  all_database_roles = try(flatten([
     for schema in var.schemas: [
       for role_name in keys(local.all_roles): {
         database = "${var.db_prefix}_${var.environment}_${schema.database}"
         role     = "${var.sc_prefix}_${schema.name}_${role_name}"
-
       }
     ]
-  ])
+  ]), [])
 
-  grants  = flatten([
+  grants  = try(flatten([
     for schema in var.schemas: flatten([
       for role, childs in transpose(local.all_roles): [
         for child in childs: {
@@ -34,27 +32,26 @@ locals {
         }
       ]
     ])
-  ])
+  ]), [])
 
-  database_privileges = flatten([
+  database_privileges = try(flatten([
     for schema in var.schemas: flatten([
       for role_name, privs in transpose(local.all_privileges.database): {
+        database = "${var.db_prefix}_${var.environment}_${schema.database}"
         role = "${var.sc_prefix}_${schema.name}_${role_name}"
         privileges = privs
-        database = "${var.db_prefix}_${var.environment}_${schema.database}"
       }
     ])
-  ])
+  ]), [])
 
-  schema_privileges = flatten([
+  schema_privileges = try(flatten([
     for schema in var.schemas: flatten([
       for role_name, privs in transpose(local.all_privileges.schema): {
-        role = "${var.sc_prefix}_${schema.name}_${role_name}"
-        privileges = privs
         database = "${var.db_prefix}_${var.environment}_${schema.database}"
         schema = "${var.sc_prefix}_${schema.name}"
+        role = "${var.sc_prefix}_${schema.name}_${role_name}"
+        privileges = privs
       }
     ])
-  ])
+  ]), [])
 }
-

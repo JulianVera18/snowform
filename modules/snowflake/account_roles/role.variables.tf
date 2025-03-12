@@ -1,4 +1,10 @@
-variable "workspace" {}
+variable "roles" {
+  type    = any
+}
+
+variable "privileges" {
+  type    = any
+}
+
 variable "environment" {}
-# variable "account_roles" {}
-# variable "account_roles_privileges" {}
+variable "db_prefix" {}

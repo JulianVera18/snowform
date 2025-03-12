@@ -12,7 +12,7 @@ provider "snowflake" {
   organization_name      = "OGVLZNC"
   account_name           = "WEA06043"
   user                   = "TERRAFORM"
-  role                   = "TERRAFORM_ADMIN" #SYSADMIN
+  role                   = "ACCOUNTADMIN"
   authenticator          = "JWT"
   private_key            = file("C:/Users/Seidor/Downloads/snowform-main/rsa_key.p8")
 }
@@ -42,6 +42,7 @@ module "snowflake" {
     resources = format(local.yaml.config.paths.resources, local.env, local.workspace)
     roles     = format(local.yaml.config.paths.roles,     local.env, local.workspace)
     defaults  = format(local.yaml.config.paths.defaults,  local.env, local.workspace)
+    templates = format(local.yaml.config.paths.templates, local.env, terraform.workspace)
   }
   deploy = local.yaml.config.deploy
   naming = local.yaml.config.naming

@@ -6,7 +6,8 @@ output "inputs" {
     # yaml_files = local.yaml_files
     # template_files = local.template_files
     # yaml_to_resources = local.yaml_to_resources
-    resources = local.resources
+    # resources = local.resources
+    # datamarts = local.templates.datamarts
   }
 }
 
@@ -33,8 +34,12 @@ output "inputs" {
 #   }
 # }
 
- # DATABASE MODULE OUTPUTS
- # ----------------------------------------- #
- # output "test" {
- #   value = module.account_role
- # }
+# DATABASE MODULE OUTPUTS
+#   ----------------------------------------- #
+output "warehouse_module" {
+  value = module.warehouse
+}
+
+output "database_module" {
+  value = module.database
+}

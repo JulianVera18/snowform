@@ -1,7 +1,6 @@
 # ROOT OUTPUTS
 # ----------------------------------------- #
 # output "locals" {
-#   description = "local variables in root.main.tf"
 #   value = {
 #     environment = local.environment
 #     team        = local.workspace
@@ -12,14 +11,13 @@
 
 # SNOWFLAKE OUTPUTS
 # ----------------------------------------- #
-# output "snowflake" {
-#   description = "outputs from snowflake module"
-#   value       = module.snowflake
-# }
+output "snowflake" {
+  value       = module.snowflake
+}
 
- output "locals" {
-   value = {
-     # import_files = local.import_files
-     imports = local.imports[*]
-   }
- }
+ # output "locals" {
+ #   value = {
+ #     import_files = local.import_files
+ #     imports = local.imports[*]
+ #   }
+ # }

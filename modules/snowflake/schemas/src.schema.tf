@@ -25,7 +25,7 @@ resource "snowflake_schema" "schema" {
   user_task_managed_initial_warehouse_size      = try(each.value.user_task_managed_initial_warehouse_size, null)
   user_task_minimum_trigger_interval_in_seconds = try(each.value.user_task_minimum_trigger_interval_in_seconds, null)
   user_task_timeout_ms                          = try(each.value.user_task_timeout_ms, null)
-  with_managed_access                           = try(each.value.with_managed_access, false)
+  with_managed_access                           = try(each.value.with_managed_access, true)
 
   lifecycle {
     prevent_destroy = false
