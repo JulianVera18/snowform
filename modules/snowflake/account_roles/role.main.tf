@@ -9,9 +9,9 @@ terraform {
 
 locals {
   account_role_grants = try(flatten([
-    for role in var.roles.account: [
-      for parent_role in try(role.account, []): {
-        role_name = role.name
+    for role, parent_roles in transpose({ for role in var.roles.account : role.name => try(role.account, []) }): [
+      for parent_role in parent_roles : {
+        role_name        = role
         parent_role_name = parent_role
       }
     ]
@@ -31,15 +31,29 @@ locals {
   ]), [])
 
 
-  system_role_grants = try(flatten([
-    for role in var.roles.system_role: [
-      for parent_role in try(role.account, []): {
-        role_name = role.name
-        parent_role_name = parent_role
-      }
-    ]
-  ]), [])
+system_role_grants = try(flatten([
+  for role, parent_roles in transpose({ for role in var.roles.system_role : role.name => try(role.account, []) }): [
+    for parent_role in parent_roles : {
+      role_name        = role
+      parent_role_name = parent_role
+    }
+  ]
+]), [])
 
-  ownership_role = element(lookup(var.roles.ownership_roles, var.environment, []), 0)
+
+  warehouse_privileges = flatten([
+    for wh, priv_map in try(var.privileges.warehouse, []) : [
+      for priv, roles in priv_map : [
+        for role in roles : {
+          # Construir el nombre completo del warehouse usando la convención
+          warehouse_name = "${wh}"
+          privilege      = priv
+          role           = role
+        }
+      ]
+    ]
+  ])
+
+  ownership_role = try(element(lookup(var.roles.ownership_roles, var.environment, []), 0), [])
 
 }

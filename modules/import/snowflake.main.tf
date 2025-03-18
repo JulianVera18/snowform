@@ -9,14 +9,9 @@ terraform {
 }
 
 locals {
+  # LOCAL - snowflake resources
   # ----------------------------------------------------
-  # resource_files    | resource definition files path
-  # roles_files       | templates files path
-  # yaml_to_resources | merge all snowflake resources
-  # resources         | all resources available as variables
-  # ----------------------------------------------------
-  resource_files = fileset(var.paths.resources, "*.yaml")
-  role_files     = var.deploy.resources.database_roles ? fileset(var.paths.roles, "*.yaml") : []
+  resource_files = try(fileset(var.paths.resources, "*.yaml"), [])
 
   yaml_to_resources = {
     for yml in local.resource_files :
@@ -24,53 +19,94 @@ locals {
   }
 
   resources = merge([
-    for content in values(local.yaml_to_resources): 
+    for content in values(local.yaml_to_resources):
       try(content.snowflake.resources, {})
   ]...)
 
-  warehouses = try(local.resources.warehouses, [])
-  databases  = try(local.resources.databases, [])
+  warehouses     = try(local.resources.warehouses, [])
+  databases      = try(local.resources.databases, [])
+  # service_users  = try(local.resources.service_users, [])
 
-  # ----------------------------------------------------
-  # roles         | rbac roles
-  # dbroles       | defines database roles
-  # account_roles | defines account roles
-  # ----------------------------------------------------
-  roles = try({
-    for rbac in local.role_files :
-      basename(rbac) => yamldecode(file("${var.paths.roles}/${rbac}"))
-  }, {})
 
-  dbroles       = try(local.roles["db.role.yaml"], {})
-  # account_roles = try(local.roles["account.role.yaml"], {})
+
+
+  # LOCAL - snowflake resource default parameters
+  # ----------------------------------------------------
+  defaults          = try(yamldecode(file("${var.paths.defaults}/defaults.yaml")).snowflake.resources, [])
+
+
+
+
+  # LOCAL - snowflake rbac files account roles && database roles
+  # ----------------------------------------------------
+  role_file      = try(fileset(var.paths.roles, "*.yaml"), [])
+
+  account_role_yaml = try(yamldecode(file("${var.paths.roles}/account.role.yaml")), {})
+  dbrole_yaml       = try(yamldecode(file("${var.paths.roles}/db.role.yaml")), {})
+  dbrole_db_schema  = flatten([
+    for db in local.databases: [
+      for schema in try(db.schemas, []): {
+        database = db.name
+        name     = schema.name
+      }
+    ]
+  ])
+
+
+
+  # LOCAL - datamarts template-driven
+  # ----------------------------------------------------
+  templates = merge([
+    for content in values(local.yaml_to_resources):
+      try(content.snowflake.templates, {})
+  ]...)
+
 }
 
- module "warehouse" {
-   source          = "./warehouses"
-   warehouses      = local.warehouses
- }
+module "warehouse" {
+  warehouses      = local.warehouses
+  source          = "./warehouses"
+  naming          = var.naming
 
- module "database" {
-   source          = "./databases"
-   databases       = local.databases
- }
+  # ownership_role = join("", lookup(module.account_role.locals.ownership_roles, var.environment, ["TERRAFORM_ADMIN"]))
+  defaults        = local.defaults.warehouses
+}
 
- module "schema" {
-   source          = "./schemas"
-   databases       = local.databases
-   depends_on      = [ module.database ]
- }
+module "database" {
+  source          = "./databases"
+  databases       = local.databases
 
- module "database_role" {
-   source          = "./database_roles"
+  # ownership_role = join("", lookup(module.account_role.locals.ownership_roles, var.environment, ["TERRAFORM_ADMIN"]))
+  defaults        = local.defaults.databases
+}
 
-   dbroles         = local.dbroles
-   schemas         = var.deploy.resources.database_roles ? module.database.schemas : []
-   depends_on      = [ module.database, module.schema ]
- }
+module "schema" {
+  source          = "./schemas"
+  databases       = local.databases
 
- module "account_role" {
-   source                   = "./account_roles"
-   workspace                = var.deploy.resources.account_roles ? var.workspace : ""
-   depends_on               = [ module.warehouse, module.database ]
- }
+  #  ownership_role = join("", lookup(module.account_role.locals.ownership_roles, var.environment, ["TERRAFORM_ADMIN"]))
+  depends_on      = [ module.database ]
+}
+
+module "database_role" {
+  source          = "./database_roles"
+  roles           = var.deploy.resources.database_roles ? local.dbrole_yaml.roles : null
+  privileges      = var.deploy.resources.database_roles ? local.dbrole_yaml.privileges : null
+  schemas         = var.deploy.resources.database_roles ? local.dbrole_db_schema : null
+
+  depends_on      = [ module.database, module.schema ]
+}
+
+module "account_role" {
+  source                   = "./account_roles"
+  
+  roles                    = var.deploy.resources.account_roles ? local.account_role_yaml.roles : null
+  privileges               = var.deploy.resources.account_roles ? local.account_role_yaml.privileges : null
+
+  depends_on      = [
+    module.warehouse,
+    module.database,
+    module.schema,
+    module.database_role
+  ]
+}

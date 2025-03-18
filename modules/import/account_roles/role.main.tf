@@ -8,43 +8,26 @@ terraform {
 }
 
 locals {
-
-  # ACCOUNT ROLES [from rbac/${workspace}/*]
-  # ------------------------
-  hierarchy  = try(yamldecode(file("${path.module}/rbac/${var.workspace}/hierarchy.yaml")), {})
-  privileges = try(yamldecode(file("${path.module}/rbac/${var.workspace}/privileges.yaml")), {})
-
-  all_roles      = try(local.hierarchy.roles, {})
-  all_privileges = try(local.privileges.privileges, {})
-
-  grants  = flatten([
-    for parent_role, childs in transpose(local.all_roles): [
-      for child_role in childs: {
-        parent = parent_role
-        child  = child_role
+  account_role_grants = try(flatten([
+    for role in var.roles.account: [
+      for parent_role in try(role.account, []): {
+        role_name = role.name
+        parent_role_name = parent_role
       }
     ]
-  ])
+  ]), [])
 
-  # database_privileges = flatten([
-  #   for schema in var.schemas: flatten([
-  #     for role_name, privs in transpose(local.all_privileges.database): {
-  #       role = "${schema.name}_${role_name}"
-  #       privileges = privs
-  #       database = schema.database
-  #     }
-  #   ])
-  # ])
-  #
-  # schema_privileges = flatten([
-  #   for schema in var.schemas: flatten([
-  #     for role_name, privs in transpose(local.all_privileges.schema): {
-  #       role = "${schema.name}_${role_name}"
-  #       privileges = privs
-  #       database = schema.database
-  #       schema = schema.name
-  #     }
-  #   ])
-  # ])
+  db_role_grants = try(flatten([
+    for role in var.roles.account: [
+      for db_name, db_roles in try(role.database, {}): [
+        for db_role in db_roles: {
+          account_role = role.name
+          database     = db_name
+          db_role      = db_role
+          db_role_fqn  = "\"${db_name}\".\"${db_role}\""
+        }
+      ]
+    ]
+  ]), [])
 }
 

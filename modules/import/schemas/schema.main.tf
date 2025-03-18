@@ -8,10 +8,20 @@ terraform {
 }
 
 locals {
-  schemas = try(flatten([
+  schemas = flatten([
     for db in var.databases: [
-    for schema in lookup(db, "schemas"):
-      merge(schema, { "database" = db.name })
+      for schema in try(db.schemas, []): {
+        database = db.name
+        name = schema.name
+      }
     ]
-  ]), [])
+  ])
+}
+
+output "local_schemas" {
+  value = local.schemas
+}
+
+output "var_databases" {
+  value = var.databases
 }

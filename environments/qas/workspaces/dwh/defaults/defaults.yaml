@@ -1,20 +1,20 @@
 snowflake:
   resources:
+    # for all warehouses
     warehouses:
-        # for all warehouses
-      - warehouse_size: SMALL
-        min_cluster_count: 1
-        max_cluster_count: 2
-        scaling_policy: STANDARD
-        auto_suspend: 300
-        auto_resume: true
-        statement_timeout_in_seconds: 3600
+      warehouse_size: MEDIUM
+      min_cluster_count: 1
+      max_cluster_count: 5
+      scaling_policy: STANDARD
+      auto_suspend: 300
+      auto_resume: true
+      statement_timeout_in_seconds: 3600
 
+    # for all databases
     databases:
-        # for all databases
-      - data_retention_time_in_days: 7
-        schemas:
-            # for all schemas
-          - data_retention_time_in_days: 7
-            suspend_task_after_num_failures: 3
-            task_auto_retry_attempts: 2
+      data_retention_time_in_days: 7
+      # for all schemas
+      schemas:
+        data_retention_time_in_days: 7
+        suspend_task_after_num_failures: 3
+        task_auto_retry_attempts: 2

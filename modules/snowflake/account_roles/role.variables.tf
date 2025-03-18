@@ -8,3 +8,4 @@ variable "privileges" {
 
 variable "environment" {}
 variable "db_prefix" {}
+variable "wh_prefix" {}

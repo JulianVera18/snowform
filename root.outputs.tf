@@ -11,9 +11,9 @@
 
 # SNOWFLAKE OUTPUTS
 # ----------------------------------------- #
-output "snowflake" {
-  value       = module.snowflake
-}
+# output "snowflake" {
+#   value       = module.snowflake
+# }
 
  # output "locals" {
  #   value = {

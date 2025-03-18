@@ -11,6 +11,7 @@ variable "paths" {
     resources = optional(string)
     roles     = optional(string)
     defaults  = optional(string)
+    templates = optional(string)
   })
 }
 

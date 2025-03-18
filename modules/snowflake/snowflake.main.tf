@@ -121,6 +121,7 @@ module "account_role" {
   #nomenclatura
   environment              = var.environment
   db_prefix                = var.db_prefix
+  wh_prefix                = var.wh_prefix
   depends_on      = [
     module.warehouse,
     module.database,

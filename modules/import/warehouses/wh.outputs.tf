@@ -1,1 +1,3 @@
-# OUTPUTS FOR **SNOWFLAKE_WAREHOUSE** RESOURCE
+output "defaults" {
+  value = var.defaults
+}

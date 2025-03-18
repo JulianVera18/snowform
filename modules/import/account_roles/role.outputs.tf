@@ -1,8 +1,7 @@
 output "locals" {
   value = {
-    hierarchy      = local.hierarchy
-    privileges     = local.privileges
-    all_roles      = local.all_roles
-    all_privileges = local.all_privileges
+    roles          = var.roles
+    privileges     = var.privileges
+    db_role_grants = local.db_role_grants
   }
 }
