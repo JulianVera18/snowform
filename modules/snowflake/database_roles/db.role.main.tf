@@ -55,31 +55,4 @@ locals {
     ])
   ]), [])
 
-    all_objects_privileges = flatten([
-    for key, privileges in local.all_privileges: flatten([
-      for obj_type, obj_privs in try(privileges.all_objects, {}): [
-        for role_name, privs in transpose(obj_privs): {
-          database       = split(".", key)[0]
-          schema         = split(".", key)[1]
-          role           = role_name
-          object_type    = obj_type
-          privileges     = privs
-        }
-      ]
-    ])
-  ])
-
-  future_object_privileges = flatten([
-    for key, privileges in local.all_privileges: flatten([
-      for obj_type, obj_privs in try(privileges.future_objects, {}): [
-        for priv_name, roles in transpose(obj_privs): {
-          database    = split(".", key)[0]
-          schema      = split(".", key)[1]
-          role        = priv_name
-          object_type = obj_type
-          privileges  = roles
-        }
-      ]
-    ])
-  ])
 }
