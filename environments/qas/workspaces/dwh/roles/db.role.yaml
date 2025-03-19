@@ -37,3 +37,20 @@ privileges:
     CREATE NOTEBOOK:                           [DB_O]
     CREATE PACKAGES POLICY:                    [DB_O]
     CREATE TAG:                                [DB_O]
+
+  all_objects:
+    tables:
+      SELECT:	[DB_R]
+      INSERT:	[DB_W]
+      UPDATE:	[DB_W]
+      DELETE:	[DB_W]
+    views:
+      SELECT:	[DB_R]
+  future_objects:
+    tables:
+      SELECT:	[DB_R]
+      INSERT:	[DB_W]
+      UPDATE:	[DB_W]
+      DELETE:	[DB_W]
+    views:
+      SELECT:	[DB_R]

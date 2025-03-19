@@ -7,3 +7,16 @@ snowflake:
         comment: TRANSFORMATION warehouse
       - name: ANALYTICS
         comment: ANALYTICS warehouse
+
+
+#####IMPORT
+
+# snowflake:
+#   resources:
+#     warehouses:
+#       - name: WH_LOADING_QAS
+#         comment: LOADING warehouse
+#       - name: WH_TRANSFORMATION_QAS
+#         comment: TRANSFORMATION warehouse
+#       - name: WH_ANALYTICS_QAS
+#         comment: ANALYTICS warehouse

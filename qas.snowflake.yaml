@@ -22,6 +22,9 @@ config:
       schemas:        true
       grants:         true
       transfer_ownership: true
+  
+  templates:
+    database_roles: standard
 
   validation:
     allowed_environments: []

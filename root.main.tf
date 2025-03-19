@@ -8,23 +8,23 @@ terraform {
   }
 }
 
-provider "snowflake" {
-  organization_name      = "OGVLZNC"
-  account_name           = "WEA06043"
-  user                   = "TERRAFORM"
-  role                   = "ACCOUNTADMIN"
-  authenticator          = "JWT"
-  private_key            = file("C:/Users/Seidor/Downloads/snowform-main/rsa_key.p8")
-}
-
 # provider "snowflake" {
-#   organization_name      = "ZNXDPOM"
-#   account_name           = "AC"
+#   organization_name      = "OGVLZNC"
+#   account_name           = "WEA06043"
 #   user                   = "TERRAFORM"
 #   role                   = "ACCOUNTADMIN"
 #   authenticator          = "JWT"
 #   private_key            = file("C:/Users/Seidor/Downloads/snowform-main/rsa_key.p8")
 # }
+
+provider "snowflake" {
+  organization_name      = "ZNXDPOM"
+  account_name           = "AC"
+  user                   = "TERRAFORM"
+  role                   = "ACCOUNTADMIN"
+  authenticator          = "JWT"
+  private_key            = file("C:/Users/Seidor/Downloads/snowform-main/rsa_key.p8")
+}
 
 locals {
   # hardcoded

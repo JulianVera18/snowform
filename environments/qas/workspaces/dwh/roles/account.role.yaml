@@ -17,66 +17,66 @@ roles:
     - name: TERRAFORM_QAS_ADMIN
       account:  [WH_LOADING_QAS_ADMIN, WH_TRANSFORMATION_QAS_ADMIN, WH_ANALYTICS_QAS_ADMIN, 
                 AC_GLB_QAS_DATA_ENGINEER, AC_GLB_QAS_BUSINESS_INTELLIGENCE, AC_GLB_QAS_DATA_ARCHITECT, AC_GLB_QAS_DATA_ANALYST]
-      database: []
+      database: {}
 
     # WAREHOUSE ROLES - Tier 2
     - name: WH_LOADING_QAS_ADMIN
       account:  [WH_LOADING_QAS_USAGE]
-      database: []
+      database: {}
     - name: WH_LOADING_QAS_USAGE
       account:  []
-      database: []
+      database: {}
     - name: WH_TRANSFORMATION_QAS_USAGE
       account:  []
-      database: []
+      database: {}
     - name: WH_TRANSFORMATION_QAS_ADMIN
       account:  [WH_TRANSFORMATION_QAS_USAGE]
-      database: []
+      database: {}
     - name: WH_ANALYTICS_QAS_USAGE
       account:  []
-      database: []
+      database: {}
     - name: WH_ANALYTICS_QAS_ADMIN
       account:  [WH_ANALYTICS_QAS_USAGE]
-      database: []
+      database: {}
 
     # DATA_ENGINEER GLOBAL ROLE - Tier 2
     - name: AC_GLB_QAS_DATA_ENGINEER
       account:  [AC_GLB_QAS_BRONZE_READER, AC_GLB_QAS_SILVER_READER_RV, AC_GLB_QAS_SILVER_READER_BV, AC_GLB_QAS_GOLD_READER]
-      database: []
+      database: {}
 
     # BUSINESS_INTELLIGENCE GLOBAL ROLE - Tier 2
     - name: AC_GLB_QAS_BUSINESS_INTELLIGENCE
       account:  [AC_GLB_QAS_BRONZE_READER, AC_GLB_QAS_SILVER_READER_RV, AC_GLB_QAS_SILVER_READER_BV, AC_GLB_QAS_GOLD_READER]
-      database: []
+      database: {}
 
     # DATA_ARCHITECT GLOBAL ROLE - Tier 2
     - name: AC_GLB_QAS_DATA_ARCHITECT
       account:  [AC_GLB_QAS_BRONZE_READER, AC_GLB_QAS_SILVER_READER_RV, AC_GLB_QAS_SILVER_READER_BV, AC_GLB_QAS_GOLD_READER]
-      database: []
+      database: {}
 
    # DATA_ANALYST GLOBAL ROLE - Tier 2
     - name: AC_GLB_QAS_DATA_ANALYST
       account:  [AC_GLB_QAS_GOLD_READER]
-      database: []
+      database: {}
    
 
     # READER GLOBAL ROLES - Tier 3
     - name: AC_GLB_QAS_BRONZE_READER
       account:  [BRONZE_GENERAL_BAR_QAS_READER, BRONZE_GENERAL_BMX_QAS_READER, BRONZE_GENERAL_BEC_QAS_READER, BRONZE_GENERAL_BPE_QAS_READER, BRONZE_GENERAL_HTC_QAS_READER, BRONZE_GENERAL_BUS_QAS_READER,
                 WH_ANALYTICS_QAS_USAGE]
-      database: []
+      database: {}
     - name: AC_GLB_QAS_SILVER_READER_RV
       account:  [SILVER_GENERAL_BAR_QAS_READER_RV, SILVER_GENERAL_BMX_QAS_READER_RV, SILVER_GENERAL_BEC_QAS_READER_RV, SILVER_GENERAL_BPE_QAS_READER_RV, SILVER_GENERAL_HTC_QAS_READER_RV, SILVER_GENERAL_BUS_QAS_READER_RV,
                 WH_ANALYTICS_QAS_USAGE]
-      database: []
+      database: {}
     - name: AC_GLB_QAS_SILVER_READER_BV
       account:  [SILVER_GENERAL_BAR_QAS_READER_BV, SILVER_GENERAL_BMX_QAS_READER_BV, SILVER_GENERAL_BEC_QAS_READER_BV, SILVER_GENERAL_BPE_QAS_READER_BV, SILVER_GENERAL_HTC_QAS_READER_BV, SILVER_GENERAL_BUS_QAS_READER_BV,
                 WH_ANALYTICS_QAS_USAGE]
-      database: []
+      database: {}
     - name: AC_GLB_QAS_GOLD_READER
       account:  [GOLD_GENERAL_BAR_QAS_READER, GOLD_GENERAL_BMX_QAS_READER, GOLD_GENERAL_BEC_QAS_READER, GOLD_GENERAL_BPE_QAS_READER, GOLD_GENERAL_HTC_QAS_READER, GOLD_GENERAL_BUS_QAS_READER,
                 WH_ANALYTICS_QAS_USAGE]
-      database: []
+      database: {}
 
    # BRONZE BASE ROLES - Tier 4
     - name: BRONZE_GENERAL_BAR_QAS_DEVELOPER

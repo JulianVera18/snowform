@@ -2,11 +2,11 @@ snowflake:
   resources:
     # for all warehouses
     warehouses:
-      warehouse_size: MEDIUM
+      warehouse_size: XSMALL
       min_cluster_count: 1
-      max_cluster_count: 5
+      max_cluster_count: 1
       scaling_policy: STANDARD
-      auto_suspend: 300
+      auto_suspend: 120
       auto_resume: true
       statement_timeout_in_seconds: 3600
 
