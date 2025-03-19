@@ -52,3 +52,5 @@ variable "naming" {
     })
   })
 }
+
+variable "templates" {}

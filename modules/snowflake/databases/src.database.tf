@@ -25,6 +25,6 @@ resource "snowflake_database" "database" {
   enable_console_output                          = try(coalesce(each.value.enable_console_output, var.defaults.enable_console_output), null)
 
   lifecycle {
-    prevent_destroy = false
+    prevent_destroy = true
   }
 }

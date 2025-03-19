@@ -8,6 +8,8 @@ terraform {
 }
 
 locals {
+  account_roles = try(var.roles.account, [])
+
   account_role_grants = try(flatten([
     for role, parent_roles in transpose({ for role in var.roles.account : role.name => try(role.account, []) }): [
       for parent_role in parent_roles : {
@@ -55,5 +57,18 @@ system_role_grants = try(flatten([
   ])
 
   ownership_role = try(element(lookup(var.roles.ownership_roles, var.environment, []), 0), [])
+  
+  all_privileges = flatten([
+    for role in local.account_roles : [
+      for privilege in try(role.privileges, []) : merge(privilege, { role_name = role.name })
+    ]
+  ])
+  account_level_privileges = [for p in local.all_privileges : p if p.type == "account_level"]
+  account_object_privileges = [for p in local.all_privileges : p if p.type == "account_object"]
+  schema_privileges = [for p in local.all_privileges : p if p.type == "schema"]
+  
+  schema_object_specific = [for p in local.all_privileges : p if p.type == "schema_object" && try(p.on_schema_object.object_type, null) != null]
+  schema_object_all = [for p in local.all_privileges : p if p.type == "schema_object" && try(p.on_schema_object.all, null) != null]
+  schema_object_future = [for p in local.all_privileges : p if p.type == "schema_object" && try(p.on_schema_object.future, null) != null]
 
 }

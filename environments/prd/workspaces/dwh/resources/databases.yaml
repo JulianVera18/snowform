@@ -35,7 +35,7 @@ snowflake:
           - name: GOLD_GLB
 
 
-#ONLY FOR IMPORT
+####### ONLY FOR IMPORT
 # snowflake:
 #   resources:
 #     databases:

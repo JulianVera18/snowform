@@ -13,3 +13,5 @@ variable "sc_prefix" {
 
 variable "roles" {}
 variable "privileges" {}
+variable "template_path" {}
+variable "template_name" {}

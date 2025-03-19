@@ -1,6 +1,6 @@
 variable "ownership_role" {
   description = "Rol al que se transferirá el ownership de los objetos"
-  type        = string
+  type        = any
 }
 
 variable "environment" {

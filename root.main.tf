@@ -17,6 +17,15 @@ provider "snowflake" {
   private_key            = file("C:/Users/Seidor/Downloads/snowform-main/rsa_key.p8")
 }
 
+# provider "snowflake" {
+#   organization_name      = "ZNXDPOM"
+#   account_name           = "AC"
+#   user                   = "TERRAFORM"
+#   role                   = "ACCOUNTADMIN"
+#   authenticator          = "JWT"
+#   private_key            = file("C:/Users/Seidor/Downloads/snowform-main/rsa_key.p8")
+# }
+
 locals {
   # hardcoded
   environment =  var.environment
@@ -42,8 +51,9 @@ module "snowflake" {
     resources = format(local.yaml.config.paths.resources, local.env, local.workspace)
     roles     = format(local.yaml.config.paths.roles,     local.env, local.workspace)
     defaults  = format(local.yaml.config.paths.defaults,  local.env, local.workspace)
-    templates = format(local.yaml.config.paths.templates, local.env, terraform.workspace)
+    templates = format(local.yaml.config.paths.templates, local.env, local.workspace)
   }
+  templates     = local.yaml.config.templates
   deploy = local.yaml.config.deploy
   naming = local.yaml.config.naming
 }

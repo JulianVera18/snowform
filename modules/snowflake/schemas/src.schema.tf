@@ -28,6 +28,6 @@ resource "snowflake_schema" "schema" {
   with_managed_access                           = try(each.value.with_managed_access, true)
 
   lifecycle {
-    prevent_destroy = false
+    prevent_destroy = true
   }
 }

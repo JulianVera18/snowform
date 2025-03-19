@@ -17,330 +17,743 @@ roles:
     - name: TERRAFORM_DEV_ADMIN
       account:  [WH_LOADING_DEV_ADMIN, WH_TRANSFORMATION_DEV_ADMIN, WH_ANALYTICS_DEV_ADMIN, 
                 AC_GLB_DEV_DATA_ENGINEER, AC_GLB_DEV_BUSINESS_INTELLIGENCE, AC_GLB_DEV_DATA_ARCHITECT]
-      database: []
+      database: {}
+      privileges: []
 
     # WAREHOUSE ROLES - Tier 2
     - name: WH_LOADING_DEV_ADMIN
       account:  [WH_LOADING_DEV_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: WH_LOADING_DEV_USAGE
       account:  []
-      database: []
+      database: {}
+      privileges: []
     - name: WH_TRANSFORMATION_DEV_USAGE
       account:  []
-      database: []
+      database: {}
+      privileges: []
     - name: WH_TRANSFORMATION_DEV_ADMIN
       account:  [WH_TRANSFORMATION_DEV_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: WH_ANALYTICS_DEV_USAGE
       account:  []
-      database: []
+      database: {}
+      privileges: []
     - name: WH_ANALYTICS_DEV_ADMIN
       account:  [WH_ANALYTICS_DEV_USAGE]
-      database: []
+      database: {}
+      privileges: []
 
     # DATA_ENGINEER GLOBAL ROLE - Tier 2
     - name: AC_GLB_DEV_DATA_ENGINEER
       account:  [AC_BAR_DEV_DATA_ENGINEER, AC_BMX_DEV_DATA_ENGINEER, AC_BEC_DEV_DATA_ENGINEER, AC_BPE_DEV_DATA_ENGINEER, AC_HTC_DEV_DATA_ENGINEER, AC_BUS_DEV_DATA_ENGINEER]
-      database: []
+      database: {}
+      privileges: []
 
     # BUSINESS_INTELLIGENCE GLOBAL ROLE - Tier 2
     - name: AC_GLB_DEV_BUSINESS_INTELLIGENCE
       account:  [AC_BAR_DEV_BUSINESS_INTELLIGENCE, AC_BMX_DEV_BUSINESS_INTELLIGENCE, AC_BEC_DEV_BUSINESS_INTELLIGENCE, AC_BPE_DEV_BUSINESS_INTELLIGENCE, AC_HTC_DEV_BUSINESS_INTELLIGENCE, AC_BUS_DEV_BUSINESS_INTELLIGENCE]
-      database: []
+      database: {}
+      privileges: []
 
     # DATA_ARCHITECT GLOBAL ROLE - Tier 2
     - name: AC_GLB_DEV_DATA_ARCHITECT
       account:  [AC_GLB_DEV_BRONZE_READER, AC_GLB_DEV_SILVER_READER_RV, AC_GLB_DEV_SILVER_READER_BV, AC_GLB_DEV_GOLD_READER]
-      database: []
+      database: {}
+      privileges: []
 
     # DATA_ENGINEER LOCAL ROLES - Tier 3
     - name: AC_BMX_DEV_DATA_ENGINEER
       account:  [BRONZE_GENERAL_BMX_DEV_DEVELOPER, SILVER_GENERAL_BMX_DEV_DEVELOPER_RV, SILVER_GENERAL_BMX_DEV_READER_BV, GOLD_GENERAL_BMX_DEV_READER, WH_LOADING_DEV_USAGE, WH_TRANSFORMATION_DEV_USAGE, WH_ANALYTICS_DEV_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: AC_BAR_DEV_DATA_ENGINEER
       account:  [BRONZE_GENERAL_BAR_DEV_DEVELOPER, SILVER_GENERAL_BAR_DEV_DEVELOPER_RV, SILVER_GENERAL_BAR_DEV_READER_BV, GOLD_GENERAL_BAR_DEV_READER, WH_LOADING_DEV_USAGE, WH_TRANSFORMATION_DEV_USAGE, WH_ANALYTICS_DEV_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: AC_BEC_DEV_DATA_ENGINEER
       account:  [BRONZE_GENERAL_BEC_DEV_DEVELOPER, SILVER_GENERAL_BEC_DEV_DEVELOPER_RV, SILVER_GENERAL_BEC_DEV_READER_BV, GOLD_GENERAL_BEC_DEV_READER, WH_LOADING_DEV_USAGE, WH_TRANSFORMATION_DEV_USAGE, WH_ANALYTICS_DEV_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: AC_BPE_DEV_DATA_ENGINEER
       account:  [BRONZE_GENERAL_BPE_DEV_DEVELOPER, SILVER_GENERAL_BPE_DEV_DEVELOPER_RV, SILVER_GENERAL_BPE_DEV_READER_BV, GOLD_GENERAL_BPE_DEV_READER, WH_LOADING_DEV_USAGE, WH_TRANSFORMATION_DEV_USAGE, WH_ANALYTICS_DEV_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: AC_HTC_DEV_DATA_ENGINEER
       account:  [BRONZE_GENERAL_HTC_DEV_DEVELOPER, SILVER_GENERAL_HTC_DEV_DEVELOPER_RV, SILVER_GENERAL_HTC_DEV_READER_BV, GOLD_GENERAL_HTC_DEV_READER, WH_LOADING_DEV_USAGE, WH_TRANSFORMATION_DEV_USAGE, WH_ANALYTICS_DEV_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: AC_BUS_DEV_DATA_ENGINEER
       account:  [BRONZE_GENERAL_BUS_DEV_DEVELOPER, SILVER_GENERAL_BUS_DEV_DEVELOPER_RV, SILVER_GENERAL_BUS_DEV_READER_BV, GOLD_GENERAL_BUS_DEV_READER, WH_LOADING_DEV_USAGE, WH_TRANSFORMATION_DEV_USAGE, WH_ANALYTICS_DEV_USAGE]
-      database: []
-   
+      database: {}
+      privileges: []
+  
     # BUSINESS_INTELLIGENCE LOCAL ROLES - Tier 3
     - name: AC_BMX_DEV_BUSINESS_INTELLIGENCE
       account:  [BRONZE_GENERAL_BMX_DEV_READER, SILVER_GENERAL_BMX_DEV_READER_RV, SILVER_GENERAL_BMX_DEV_DEVELOPER_BV, GOLD_GENERAL_BMX_DEV_DEVELOPER, WH_TRANSFORMATION_DEV_USAGE, WH_ANALYTICS_DEV_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: AC_BAR_DEV_BUSINESS_INTELLIGENCE
       account:  [BRONZE_GENERAL_BAR_DEV_READER, SILVER_GENERAL_BAR_DEV_READER_RV, SILVER_GENERAL_BAR_DEV_DEVELOPER_BV, GOLD_GENERAL_BAR_DEV_DEVELOPER, WH_TRANSFORMATION_DEV_USAGE, WH_ANALYTICS_DEV_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: AC_BEC_DEV_BUSINESS_INTELLIGENCE
       account:  [BRONZE_GENERAL_BEC_DEV_READER, SILVER_GENERAL_BEC_DEV_READER_RV, SILVER_GENERAL_BEC_DEV_DEVELOPER_BV, GOLD_GENERAL_BEC_DEV_DEVELOPER, WH_TRANSFORMATION_DEV_USAGE, WH_ANALYTICS_DEV_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: AC_BPE_DEV_BUSINESS_INTELLIGENCE
       account:  [BRONZE_GENERAL_BPE_DEV_READER, SILVER_GENERAL_BPE_DEV_READER_RV, SILVER_GENERAL_BPE_DEV_DEVELOPER_BV, GOLD_GENERAL_BPE_DEV_DEVELOPER, WH_TRANSFORMATION_DEV_USAGE, WH_ANALYTICS_DEV_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: AC_HTC_DEV_BUSINESS_INTELLIGENCE
       account:  [BRONZE_GENERAL_HTC_DEV_READER, SILVER_GENERAL_HTC_DEV_READER_RV, SILVER_GENERAL_HTC_DEV_DEVELOPER_BV, GOLD_GENERAL_HTC_DEV_DEVELOPER, WH_TRANSFORMATION_DEV_USAGE, WH_ANALYTICS_DEV_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: AC_BUS_DEV_BUSINESS_INTELLIGENCE
       account:  [BRONZE_GENERAL_BUS_DEV_READER, SILVER_GENERAL_BUS_DEV_READER_RV, SILVER_GENERAL_BUS_DEV_DEVELOPER_BV, GOLD_GENERAL_BUS_DEV_DEVELOPER, WH_TRANSFORMATION_DEV_USAGE, WH_ANALYTICS_DEV_USAGE]
-      database: []
+      database: {}
+      privileges: []
 
     # READER GLOBAL ROLES - Tier 3
     - name: AC_GLB_DEV_BRONZE_READER
       account:  [BRONZE_GENERAL_BAR_DEV_READER, BRONZE_GENERAL_BMX_DEV_READER, BRONZE_GENERAL_BEC_DEV_READER, BRONZE_GENERAL_BPE_DEV_READER, BRONZE_GENERAL_HTC_DEV_READER, BRONZE_GENERAL_BUS_DEV_READER,
                 WH_ANALYTICS_DEV_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: AC_GLB_DEV_SILVER_READER_RV
       account:  [SILVER_GENERAL_BAR_DEV_READER_RV, SILVER_GENERAL_BMX_DEV_READER_RV, SILVER_GENERAL_BEC_DEV_READER_RV, SILVER_GENERAL_BPE_DEV_READER_RV, SILVER_GENERAL_HTC_DEV_READER_RV, SILVER_GENERAL_BUS_DEV_READER_RV,
                 WH_ANALYTICS_DEV_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: AC_GLB_DEV_SILVER_READER_BV
       account:  [SILVER_GENERAL_BAR_DEV_READER_BV, SILVER_GENERAL_BMX_DEV_READER_BV, SILVER_GENERAL_BEC_DEV_READER_BV, SILVER_GENERAL_BPE_DEV_READER_BV, SILVER_GENERAL_HTC_DEV_READER_BV, SILVER_GENERAL_BUS_DEV_READER_BV,
                 WH_ANALYTICS_DEV_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: AC_GLB_DEV_GOLD_READER
       account:  [GOLD_GENERAL_BAR_DEV_READER, GOLD_GENERAL_BMX_DEV_READER, GOLD_GENERAL_BEC_DEV_READER, GOLD_GENERAL_BPE_DEV_READER, GOLD_GENERAL_HTC_DEV_READER, GOLD_GENERAL_BUS_DEV_READER,
                 WH_ANALYTICS_DEV_USAGE]
-      database: []
+      database: {}
+      privileges: []
 
     # BRONZE BASE ROLES - Tier 4
     - name: BRONZE_GENERAL_BAR_DEV_DEVELOPER
       account:  []
       database: 
         "01": [SC_BRONZE_AS400_BAR_DB_O, SC_BRONZE_OPE_GLB_DB_O]
+      privileges: []
+
     - name: BRONZE_GENERAL_BAR_DEV_READER
       account:  []
       database:
         "01": [SC_BRONZE_AS400_BAR_DB_R, SC_BRONZE_OPE_GLB_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: BRONZE_GENERAL_BMX_DEV_DEVELOPER
       account:  []
       database: 
         "01": [SC_BRONZE_E1P_BMX_DB_O, SC_BRONZE_VENDING_BMX_DB_O, SC_BRONZE_OPE_GLB_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: BRONZE_GENERAL_BMX_DEV_READER
       account:  []
       database:
         "01": [SC_BRONZE_E1P_BMX_DB_R, SC_BRONZE_VENDING_BMX_DB_R, SC_BRONZE_OPE_GLB_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: BRONZE_GENERAL_BEC_DEV_DEVELOPER
       account:  []    
       database: 
         "01": [SC_BRONZE_AS400_BEC_DB_O, SC_BRONZE_OPE_GLB_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: BRONZE_GENERAL_BEC_DEV_READER
       account:  []
       database:
         "01": [SC_BRONZE_AS400_BEC_DB_R, SC_BRONZE_OPE_GLB_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: BRONZE_GENERAL_BPE_DEV_DEVELOPER
       account:  []    
       database: 
         "01": [SC_BRONZE_AS400_BPE_DB_O, SC_BRONZE_OPE_GLB_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: BRONZE_GENERAL_BPE_DEV_READER
       account:  []
       database:
         "01": [SC_BRONZE_AS400_BPE_DB_R, SC_BRONZE_OPE_GLB_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: BRONZE_GENERAL_HTC_DEV_DEVELOPER
       account:  []    
       database: 
         "01": [SC_BRONZE_AS400_HTC_DB_O, SC_BRONZE_OPE_GLB_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: BRONZE_GENERAL_HTC_DEV_READER
       account:  []
       database:
         "01": [SC_BRONZE_AS400_HTC_DB_R, SC_BRONZE_OPE_GLB_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: BRONZE_GENERAL_BUS_DEV_DEVELOPER
       account:  []    
       database: 
         "01": [SC_BRONZE_SNOWF_BUS_DB_O, SC_BRONZE_OPE_GLB_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: BRONZE_GENERAL_BUS_DEV_READER
       account:  []
       database:
         "01": [SC_BRONZE_SNOWF_BUS_DB_R, SC_BRONZE_OPE_GLB_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: BRONZE_GENERAL_GLB_DEV_DEVELOPER
       account:  []    
       database: 
         "01": [SC_BRONZE_OPE_GLB_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: BRONZE_GENERAL_GLB_DEV_READER
       account:  []
       database:
         "01": [SC_BRONZE_OPE_GLB_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     
     # SILVER BASE ROLES - Tier 4
     - name: SILVER_GENERAL_BAR_DEV_DEVELOPER_RV
       account:  []    
       database: 
         "01": [SC_SILVER_BAR_RV_DB_O, SC_SILVER_GLB_RV_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BAR_DEV_READER_RV
       account:  []
       database:
         "01": [SC_SILVER_BAR_RV_DB_R, SC_SILVER_GLB_RV_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BAR_DEV_DEVELOPER_BV
       account:  []    
       database: 
         "01": [SC_SILVER_BAR_BV_DB_O, SC_SILVER_GLB_BV_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BAR_DEV_READER_BV
       account:  []
       database:
         "01": [SC_SILVER_BAR_BV_DB_R, SC_SILVER_GLB_BV_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BMX_DEV_DEVELOPER_RV
       account:  []    
       database: 
         "01": [SC_SILVER_BMX_RV_DB_O, SC_SILVER_GLB_RV_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BMX_DEV_READER_RV
       account:  []
       database:
         "01": [SC_SILVER_BMX_RV_DB_R, SC_SILVER_GLB_RV_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BMX_DEV_DEVELOPER_BV
       account:  []    
       database: 
         "01": [SC_SILVER_BMX_BV_DB_O, SC_SILVER_GLB_BV_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BMX_DEV_READER_BV
       account:  []
       database:
         "01": [SC_SILVER_BMX_BV_DB_R, SC_SILVER_GLB_BV_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BEC_DEV_DEVELOPER_RV
       account:  []    
       database: 
         "01": [SC_SILVER_BEC_RV_DB_O, SC_SILVER_GLB_RV_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BEC_DEV_READER_RV
       account:  []
       database:
         "01": [SC_SILVER_BEC_RV_DB_R, SC_SILVER_GLB_RV_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BEC_DEV_DEVELOPER_BV
       account:  []    
       database: 
         "01": [SC_SILVER_BEC_BV_DB_O, SC_SILVER_GLB_BV_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BEC_DEV_READER_BV
       account:  []
       database:
         "01": [SC_SILVER_BEC_BV_DB_R, SC_SILVER_GLB_BV_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BPE_DEV_DEVELOPER_RV
       account:  []    
       database: 
         "01": [SC_SILVER_BPE_RV_DB_O, SC_SILVER_GLB_RV_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BPE_DEV_READER_RV
       account:  []
       database:
         "01": [SC_SILVER_BPE_RV_DB_R, SC_SILVER_GLB_RV_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BPE_DEV_DEVELOPER_BV
       account:  []    
       database: 
         "01": [SC_SILVER_BPE_BV_DB_O, SC_SILVER_GLB_BV_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BPE_DEV_READER_BV
       account:  []
       database:
         "01": [SC_SILVER_BPE_BV_DB_R, SC_SILVER_GLB_BV_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_HTC_DEV_DEVELOPER_RV
       account:  []    
       database: 
         "01": [SC_SILVER_HTC_RV_DB_O, SC_SILVER_GLB_RV_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_HTC_DEV_READER_RV
       account:  []
       database:
         "01": [SC_SILVER_HTC_RV_DB_R, SC_SILVER_GLB_RV_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_HTC_DEV_DEVELOPER_BV
       account:  []    
       database: 
         "01": [SC_SILVER_HTC_BV_DB_O, SC_SILVER_GLB_BV_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_HTC_DEV_READER_BV
       account:  []
       database:
         "01": [SC_SILVER_HTC_BV_DB_R, SC_SILVER_GLB_BV_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BUS_DEV_DEVELOPER_RV
       account:  []    
       database: 
         "01": [SC_SILVER_BUS_RV_DB_O, SC_SILVER_GLB_RV_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BUS_DEV_READER_RV
       account:  []
       database:
         "01": [SC_SILVER_BUS_RV_DB_R, SC_SILVER_GLB_RV_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BUS_DEV_DEVELOPER_BV
       account:  []    
       database: 
         "01": [SC_SILVER_BUS_BV_DB_O, SC_SILVER_GLB_BV_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_BUS_DEV_READER_BV
       account:  []
       database:
         "01": [SC_SILVER_BUS_BV_DB_R, SC_SILVER_GLB_BV_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_GLB_DEV_DEVELOPER_RV
       account:  []    
       database: 
         "01": [SC_SILVER_GLB_RV_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_GLB_DEV_READER_RV
       account:  []
       database:
         "01": [SC_SILVER_GLB_RV_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_GLB_DEV_DEVELOPER_BV
       account:  []    
       database: 
         "01": [SC_SILVER_GLB_BV_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: SILVER_GENERAL_GLB_DEV_READER_BV
       account:  []
       database:
         "01": [SC_SILVER_GLB_BV_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
 
     # GOLD BASE ROLES - Tier 4
     - name: GOLD_GENERAL_BAR_DEV_DEVELOPER
       account:  []    
       database: 
         "01": [SC_GOLD_BAR_DB_O, SC_GOLD_GLB_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: GOLD_GENERAL_BAR_DEV_READER
       account:  []
       database:
         "01": [SC_GOLD_BAR_DB_R, SC_GOLD_GLB_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: GOLD_GENERAL_BMX_DEV_DEVELOPER
       account:  []    
       database: 
         "01": [SC_GOLD_BMX_DB_O, SC_GOLD_GLB_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: GOLD_GENERAL_BMX_DEV_READER
       account:  []
       database:
         "01": [SC_GOLD_BMX_DB_R, SC_GOLD_GLB_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: GOLD_GENERAL_BEC_DEV_DEVELOPER
       account:  []    
       database: 
         "01": [SC_GOLD_BEC_DB_O, SC_GOLD_GLB_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: GOLD_GENERAL_BEC_DEV_READER
       account:  []
       database:
         "01": [SC_GOLD_BEC_DB_R, SC_GOLD_GLB_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: GOLD_GENERAL_BPE_DEV_DEVELOPER
       account:  []    
       database: 
         "01": [SC_GOLD_BPE_DB_O, SC_GOLD_GLB_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: GOLD_GENERAL_BPE_DEV_READER
       account:  []
       database:
         "01": [SC_GOLD_BPE_DB_R, SC_GOLD_GLB_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: GOLD_GENERAL_HTC_DEV_DEVELOPER
       account:  []    
       database: 
         "01": [SC_GOLD_HTC_DB_O, SC_GOLD_GLB_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: GOLD_GENERAL_HTC_DEV_READER
       account:  []
       database:
         "01": [SC_GOLD_HTC_DB_R, SC_GOLD_GLB_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: GOLD_GENERAL_BUS_DEV_DEVELOPER
       account:  []    
       database: 
         "01": [SC_GOLD_BUS_DB_O, SC_GOLD_GLB_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: GOLD_GENERAL_BUS_DEV_READER
       account:  []
       database:
         "01": [SC_GOLD_BUS_DB_R, SC_GOLD_GLB_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: GOLD_GENERAL_GLB_DEV_DEVELOPER
       account:  []    
       database: 
         "01": [SC_GOLD_GLB_DB_O]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
     - name: GOLD_GENERAL_GLB_DEV_READER
       account:  []
       database:
         "01": [SC_GOLD_GLB_DB_R]
+      privileges:
+        - type: schema_object
+          privileges: ["SELECT"]
+          on_account: true
+          all_privileges: false
+          with_grant_option: false
+          always_apply: false
 
 privileges:
   # account:

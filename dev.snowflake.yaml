@@ -5,7 +5,7 @@ config:
   db_prefix:    "BD_AC"        # database prefix
   wh_prefix:    "WH"           # warehouse prefix
   sc_prefix:    "SC"           # schema prefix
-  use_workspace: true
+  use_workspace: true          # enable workspace
 
   paths:
     resources: "environments/%s/workspaces/%s/resources"       # dev, security
@@ -22,6 +22,9 @@ config:
       schemas:        true
       grants:         true
       transfer_ownership: true
+
+  templates:
+    database_roles: standard
 
   validation:
     allowed_environments: []

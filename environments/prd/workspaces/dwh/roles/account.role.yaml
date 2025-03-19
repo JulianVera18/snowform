@@ -17,297 +17,368 @@ roles:
     - name: TERRAFORM_PRD_ADMIN
       account:  [WH_LOADING_PRD_ADMIN, WH_TRANSFORMATION_PRD_ADMIN, WH_ANALYTICS_PRD_ADMIN, 
                 AC_GLB_PRD_DATA_ENGINEER, AC_GLB_PRD_BUSINESS_INTELLIGENCE, AC_GLB_PRD_DATA_ARCHITECT, AC_GLB_PRD_DATA_ANALYST]
-      database: []
+      database: {}
+      privileges: []
 
     # WAREHOUSE ROLES - Tier 2
     - name: WH_LOADING_PRD_ADMIN
       account:  [WH_LOADING_PRD_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: WH_LOADING_PRD_USAGE
       account:  []
-      database: []
+      database: {}
+      privileges: []
     - name: WH_TRANSFORMATION_PRD_USAGE
       account:  []
-      database: []
+      database: {}
+      privileges: []
     - name: WH_TRANSFORMATION_PRD_ADMIN
       account:  [WH_TRANSFORMATION_PRD_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: WH_ANALYTICS_PRD_USAGE
       account:  []
-      database: []
+      database: {}
+      privileges: []
     - name: WH_ANALYTICS_PRD_ADMIN
       account:  [WH_ANALYTICS_PRD_USAGE]
-      database: []
+      database: {}
+      privileges: []
 
     # DATA_ENGINEER GLOBAL ROLE - Tier 2
     - name: AC_GLB_PRD_DATA_ENGINEER
       account:  [AC_GLB_PRD_BRONZE_READER, AC_GLB_PRD_SILVER_READER_RV, AC_GLB_PRD_SILVER_READER_BV, AC_GLB_PRD_GOLD_READER]
-      database: []
+      database: {}
+      privileges: []
 
     # BUSINESS_INTELLIGENCE GLOBAL ROLE - Tier 2
     - name: AC_GLB_PRD_BUSINESS_INTELLIGENCE
       account:  [AC_GLB_PRD_BRONZE_READER, AC_GLB_PRD_SILVER_READER_RV, AC_GLB_PRD_SILVER_READER_BV, AC_GLB_PRD_GOLD_READER]
-      database: []
+      database: {}
+      privileges: []
 
     # DATA_ARCHITECT GLOBAL ROLE - Tier 2
     - name: AC_GLB_PRD_DATA_ARCHITECT
       account:  [AC_GLB_PRD_BRONZE_READER, AC_GLB_PRD_SILVER_READER_RV, AC_GLB_PRD_SILVER_READER_BV, AC_GLB_PRD_GOLD_READER]
-      database: []
+      database: {}
+      privileges: []
 
    # DATA_ANALYST GLOBAL ROLE - Tier 2
     - name: AC_GLB_PRD_DATA_ANALYST
       account:  [AC_GLB_PRD_GOLD_READER]
-      database: []
-   
+      database: {}
+      privileges: []
+  
 
     # READER GLOBAL ROLES - Tier 3
     - name: AC_GLB_PRD_BRONZE_READER
       account:  [BRONZE_GENERAL_BAR_PRD_READER, BRONZE_GENERAL_BMX_PRD_READER, BRONZE_GENERAL_BEC_PRD_READER, BRONZE_GENERAL_BPE_PRD_READER, BRONZE_GENERAL_HTC_PRD_READER, BRONZE_GENERAL_BUS_PRD_READER,
                 WH_ANALYTICS_PRD_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: AC_GLB_PRD_SILVER_READER_RV
       account:  [SILVER_GENERAL_BAR_PRD_READER_RV, SILVER_GENERAL_BMX_PRD_READER_RV, SILVER_GENERAL_BEC_PRD_READER_RV, SILVER_GENERAL_BPE_PRD_READER_RV, SILVER_GENERAL_HTC_PRD_READER_RV, SILVER_GENERAL_BUS_PRD_READER_RV,
                 WH_ANALYTICS_PRD_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: AC_GLB_PRD_SILVER_READER_BV
       account:  [SILVER_GENERAL_BAR_PRD_READER_BV, SILVER_GENERAL_BMX_PRD_READER_BV, SILVER_GENERAL_BEC_PRD_READER_BV, SILVER_GENERAL_BPE_PRD_READER_BV, SILVER_GENERAL_HTC_PRD_READER_BV, SILVER_GENERAL_BUS_PRD_READER_BV,
                 WH_ANALYTICS_PRD_USAGE]
-      database: []
+      database: {}
+      privileges: []
     - name: AC_GLB_PRD_GOLD_READER
       account:  [GOLD_GENERAL_BAR_PRD_READER, GOLD_GENERAL_BMX_PRD_READER, GOLD_GENERAL_BEC_PRD_READER, GOLD_GENERAL_BPE_PRD_READER, GOLD_GENERAL_HTC_PRD_READER, GOLD_GENERAL_BUS_PRD_READER,
                 WH_ANALYTICS_PRD_USAGE]
-      database: []
+      database: {}
+      privileges: []
 
    # BRONZE BASE ROLES - Tier 4
     - name: BRONZE_GENERAL_BAR_PRD_DEVELOPER
       account:  []
       database: 
         "01": [SC_BRONZE_AS400_BAR_DB_O, SC_BRONZE_OPE_GLB_DB_O]
+      privileges: []
     - name: BRONZE_GENERAL_BAR_PRD_READER
       account:  []
       database:
         "01": [SC_BRONZE_AS400_BAR_DB_R, SC_BRONZE_OPE_GLB_DB_R]
+      privileges: []
     - name: BRONZE_GENERAL_BMX_PRD_DEVELOPER
       account:  []
       database: 
         "01": [SC_BRONZE_E1P_BMX_DB_O, SC_BRONZE_VENDING_BMX_DB_O, SC_BRONZE_OPE_GLB_DB_O]
+      privileges: []
     - name: BRONZE_GENERAL_BMX_PRD_READER
       account:  []
       database:
         "01": [SC_BRONZE_E1P_BMX_DB_R, SC_BRONZE_VENDING_BMX_DB_R, SC_BRONZE_OPE_GLB_DB_R]
+      privileges: []
     - name: BRONZE_GENERAL_BEC_PRD_DEVELOPER
       account:  []    
       database: 
         "01": [SC_BRONZE_AS400_BEC_DB_O, SC_BRONZE_OPE_GLB_DB_O]
+      privileges: []
     - name: BRONZE_GENERAL_BEC_PRD_READER
       account:  []
       database:
         "01": [SC_BRONZE_AS400_BEC_DB_R, SC_BRONZE_OPE_GLB_DB_R]
+      privileges: []
     - name: BRONZE_GENERAL_BPE_PRD_DEVELOPER
       account:  []    
       database: 
         "01": [SC_BRONZE_AS400_BPE_DB_O, SC_BRONZE_OPE_GLB_DB_O]
+      privileges: []
     - name: BRONZE_GENERAL_BPE_PRD_READER
       account:  []
       database:
         "01": [SC_BRONZE_AS400_BPE_DB_R, SC_BRONZE_OPE_GLB_DB_R]
+      privileges: []
     - name: BRONZE_GENERAL_HTC_PRD_DEVELOPER
       account:  []    
       database: 
         "01": [SC_BRONZE_AS400_HTC_DB_O, SC_BRONZE_OPE_GLB_DB_O]
+      privileges: []
     - name: BRONZE_GENERAL_HTC_PRD_READER
       account:  []
       database:
         "01": [SC_BRONZE_AS400_HTC_DB_R, SC_BRONZE_OPE_GLB_DB_R]
+      privileges: []
     - name: BRONZE_GENERAL_BUS_PRD_DEVELOPER
       account:  []    
       database: 
         "01": [SC_BRONZE_SNOWF_BUS_DB_O, SC_BRONZE_OPE_GLB_DB_O]
+      privileges: []
     - name: BRONZE_GENERAL_BUS_PRD_READER
       account:  []
       database:
         "01": [SC_BRONZE_SNOWF_BUS_DB_R, SC_BRONZE_OPE_GLB_DB_R]
+      privileges: []
     - name: BRONZE_GENERAL_GLB_PRD_DEVELOPER
       account:  []    
       database: 
         "01": [SC_BRONZE_OPE_GLB_DB_O]
+      privileges: []
     - name: BRONZE_GENERAL_GLB_PRD_READER
       account:  []
       database:
         "01": [SC_BRONZE_OPE_GLB_DB_R]
+      privileges: []
     
     # SILVER BASE ROLES - Tier 4
     - name: SILVER_GENERAL_BAR_PRD_DEVELOPER_RV
       account:  []    
       database: 
         "01": [SC_SILVER_BAR_RV_DB_O, SC_SILVER_GLB_RV_DB_O]
+      privileges: []
     - name: SILVER_GENERAL_BAR_PRD_READER_RV
       account:  []
       database:
         "01": [SC_SILVER_BAR_RV_DB_R, SC_SILVER_GLB_RV_DB_R]
+      privileges: []
     - name: SILVER_GENERAL_BAR_PRD_DEVELOPER_BV
       account:  []    
       database: 
         "01": [SC_SILVER_BAR_BV_DB_O, SC_SILVER_GLB_BV_DB_O]
+      privileges: []
     - name: SILVER_GENERAL_BAR_PRD_READER_BV
       account:  []
       database:
         "01": [SC_SILVER_BAR_BV_DB_R, SC_SILVER_GLB_BV_DB_R]
+      privileges: []
     - name: SILVER_GENERAL_BMX_PRD_DEVELOPER_RV
       account:  []    
       database: 
         "01": [SC_SILVER_BMX_RV_DB_O, SC_SILVER_GLB_RV_DB_O]
+      privileges: []
     - name: SILVER_GENERAL_BMX_PRD_READER_RV
       account:  []
       database:
         "01": [SC_SILVER_BMX_RV_DB_R, SC_SILVER_GLB_RV_DB_R]
+      privileges: []
     - name: SILVER_GENERAL_BMX_PRD_DEVELOPER_BV
       account:  []    
       database: 
         "01": [SC_SILVER_BMX_BV_DB_O, SC_SILVER_GLB_BV_DB_O]
+      privileges: []
     - name: SILVER_GENERAL_BMX_PRD_READER_BV
       account:  []
       database:
         "01": [SC_SILVER_BMX_BV_DB_R, SC_SILVER_GLB_BV_DB_R]
+      privileges: []
     - name: SILVER_GENERAL_BEC_PRD_DEVELOPER_RV
       account:  []    
       database: 
         "01": [SC_SILVER_BEC_RV_DB_O, SC_SILVER_GLB_RV_DB_O]
+      privileges: []
     - name: SILVER_GENERAL_BEC_PRD_READER_RV
       account:  []
       database:
         "01": [SC_SILVER_BEC_RV_DB_R, SC_SILVER_GLB_RV_DB_R]
+      privileges: []
     - name: SILVER_GENERAL_BEC_PRD_DEVELOPER_BV
       account:  []    
       database: 
         "01": [SC_SILVER_BEC_BV_DB_O, SC_SILVER_GLB_BV_DB_O]
+      privileges: []
     - name: SILVER_GENERAL_BEC_PRD_READER_BV
       account:  []
       database:
         "01": [SC_SILVER_BEC_BV_DB_R, SC_SILVER_GLB_BV_DB_R]
+      privileges: []
     - name: SILVER_GENERAL_BPE_PRD_DEVELOPER_RV
       account:  []    
       database: 
         "01": [SC_SILVER_BPE_RV_DB_O, SC_SILVER_GLB_RV_DB_O]
+      privileges: []
     - name: SILVER_GENERAL_BPE_PRD_READER_RV
       account:  []
       database:
         "01": [SC_SILVER_BPE_RV_DB_R, SC_SILVER_GLB_RV_DB_R]
+      privileges: []
     - name: SILVER_GENERAL_BPE_PRD_DEVELOPER_BV
       account:  []    
       database: 
         "01": [SC_SILVER_BPE_BV_DB_O, SC_SILVER_GLB_BV_DB_O]
+      privileges: []
     - name: SILVER_GENERAL_BPE_PRD_READER_BV
       account:  []
       database:
         "01": [SC_SILVER_BPE_BV_DB_R, SC_SILVER_GLB_BV_DB_R]
+      privileges: []
     - name: SILVER_GENERAL_HTC_PRD_DEVELOPER_RV
       account:  []    
       database: 
         "01": [SC_SILVER_HTC_RV_DB_O, SC_SILVER_GLB_RV_DB_O]
+      privileges: []
     - name: SILVER_GENERAL_HTC_PRD_READER_RV
       account:  []
       database:
         "01": [SC_SILVER_HTC_RV_DB_R, SC_SILVER_GLB_RV_DB_R]
+      privileges: []
     - name: SILVER_GENERAL_HTC_PRD_DEVELOPER_BV
       account:  []    
       database: 
         "01": [SC_SILVER_HTC_BV_DB_O, SC_SILVER_GLB_BV_DB_O]
+      privileges: []
     - name: SILVER_GENERAL_HTC_PRD_READER_BV
       account:  []
       database:
         "01": [SC_SILVER_HTC_BV_DB_R, SC_SILVER_GLB_BV_DB_R]
+      privileges: []
     - name: SILVER_GENERAL_BUS_PRD_DEVELOPER_RV
       account:  []    
       database: 
         "01": [SC_SILVER_BUS_RV_DB_O, SC_SILVER_GLB_RV_DB_O]
+      privileges: []
     - name: SILVER_GENERAL_BUS_PRD_READER_RV
       account:  []
       database:
         "01": [SC_SILVER_BUS_RV_DB_R, SC_SILVER_GLB_RV_DB_R]
+      privileges: []
     - name: SILVER_GENERAL_BUS_PRD_DEVELOPER_BV
       account:  []    
       database: 
         "01": [SC_SILVER_BUS_BV_DB_O, SC_SILVER_GLB_BV_DB_O]
+      privileges: []
     - name: SILVER_GENERAL_BUS_PRD_READER_BV
       account:  []
       database:
         "01": [SC_SILVER_BUS_BV_DB_R, SC_SILVER_GLB_BV_DB_R]
+      privileges: []
     - name: SILVER_GENERAL_GLB_PRD_DEVELOPER_RV
       account:  []    
       database: 
         "01": [SC_SILVER_GLB_RV_DB_O]
+      privileges: []
     - name: SILVER_GENERAL_GLB_PRD_READER_RV
       account:  []
       database:
         "01": [SC_SILVER_GLB_RV_DB_R]
+      privileges: []
     - name: SILVER_GENERAL_GLB_PRD_DEVELOPER_BV
       account:  []    
       database: 
         "01": [SC_SILVER_GLB_BV_DB_O]
+      privileges: []
     - name: SILVER_GENERAL_GLB_PRD_READER_BV
       account:  []
       database:
         "01": [SC_SILVER_GLB_BV_DB_R]
+      privileges: []
 
     # GOLD BASE ROLES - Tier 4
     - name: GOLD_GENERAL_BAR_PRD_DEVELOPER
       account:  []    
       database: 
         "01": [SC_GOLD_BAR_DB_O, SC_GOLD_GLB_DB_O]
+      privileges: []
     - name: GOLD_GENERAL_BAR_PRD_READER
       account:  []
       database:
         "01": [SC_GOLD_BAR_DB_R, SC_GOLD_GLB_DB_R]
+      privileges: []
     - name: GOLD_GENERAL_BMX_PRD_DEVELOPER
       account:  []    
       database: 
         "01": [SC_GOLD_BMX_DB_O, SC_GOLD_GLB_DB_O]
+      privileges: []
     - name: GOLD_GENERAL_BMX_PRD_READER
       account:  []
       database:
         "01": [SC_GOLD_BMX_DB_R, SC_GOLD_GLB_DB_R]
+      privileges: []
     - name: GOLD_GENERAL_BEC_PRD_DEVELOPER
       account:  []    
       database: 
         "01": [SC_GOLD_BEC_DB_O, SC_GOLD_GLB_DB_O]
+      privileges: []
     - name: GOLD_GENERAL_BEC_PRD_READER
       account:  []
       database:
         "01": [SC_GOLD_BEC_DB_R, SC_GOLD_GLB_DB_R]
+      privileges: []
     - name: GOLD_GENERAL_BPE_PRD_DEVELOPER
       account:  []    
       database: 
         "01": [SC_GOLD_BPE_DB_O, SC_GOLD_GLB_DB_O]
+      privileges: []
     - name: GOLD_GENERAL_BPE_PRD_READER
       account:  []
       database:
         "01": [SC_GOLD_BPE_DB_R, SC_GOLD_GLB_DB_R]
+      privileges: []
     - name: GOLD_GENERAL_HTC_PRD_DEVELOPER
       account:  []    
       database: 
         "01": [SC_GOLD_HTC_DB_O, SC_GOLD_GLB_DB_O]
+      privileges: []
     - name: GOLD_GENERAL_HTC_PRD_READER
       account:  []
       database:
         "01": [SC_GOLD_HTC_DB_R, SC_GOLD_GLB_DB_R]
+      privileges: []
     - name: GOLD_GENERAL_BUS_PRD_DEVELOPER
       account:  []    
       database: 
         "01": [SC_GOLD_BUS_DB_O, SC_GOLD_GLB_DB_O]
+      privileges: []
     - name: GOLD_GENERAL_BUS_PRD_READER
       account:  []
       database:
         "01": [SC_GOLD_BUS_DB_R, SC_GOLD_GLB_DB_R]
+      privileges: []
     - name: GOLD_GENERAL_GLB_PRD_DEVELOPER
       account:  []    
       database: 
         "01": [SC_GOLD_GLB_DB_O]
+      privileges: []
     - name: GOLD_GENERAL_GLB_PRD_READER
       account:  []
       database:
         "01": [SC_GOLD_GLB_DB_R]
-   
+      privileges: []
+
 
 privileges:
   warehouse:

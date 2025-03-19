@@ -8,7 +8,7 @@ snowflake:
       - name: ANALYTICS
         comment: ANALYTICS warehouse
 
-#ONLY FOR IMPORT
+# ONLY FOR IMPORT
 
 # snowflake:
 #   resources:

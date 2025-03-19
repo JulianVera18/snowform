@@ -1,0 +1,39 @@
+roles:
+  database:
+    ${schema}_DB_O: [${schema}_DB_W]
+    ${schema}_DB_W: [${schema}_DB_R]
+    ${schema}_DB_R: []
+
+privileges:
+  database:
+    USAGE: [${schema}_DB_R]
+    MONITOR: [${schema}_DB_W]
+    MODIFY: [${schema}_DB_W]
+    CREATE DATABASE ROLE: [${schema}_DB_O]
+    CREATE SCHEMA: [${schema}_DB_O]
+
+  schema:
+    USAGE: [${schema}_DB_R]
+    MONITOR: [${schema}_DB_W]
+    MODIFY: [${schema}_DB_W]
+    CREATE TABLE: [${schema}_DB_O]
+    CREATE VIEW: [${schema}_DB_O]
+    CREATE STAGE: [${schema}_DB_O]
+    CREATE PIPE: [${schema}_DB_O]
+
+  all_objects:
+    tables:
+      SELECT:	[${schema}_DB_R]
+      INSERT:	[${schema}_DB_W]
+      UPDATE:	[${schema}_DB_W]
+      DELETE:	[${schema}_DB_W]
+    views:
+      SELECT:	[${schema}_DB_R]
+  future_objects:
+    tables:
+      SELECT:	[${schema}_DB_R]
+      INSERT:	[${schema}_DB_W]
+      UPDATE:	[${schema}_DB_W]
+      DELETE:	[${schema}_DB_W]
+    views:
+      SELECT:	[${schema}_DB_R]

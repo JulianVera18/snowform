@@ -102,6 +102,8 @@ module "schema" {
 
 module "database_role" {
   source          = "./database_roles"
+  template_path   = var.deploy.resources.database_roles ? var.paths.templates : null
+  template_name   = var.deploy.resources.database_roles ? var.templates.database_roles : null
   roles           = var.deploy.resources.database_roles ? local.dbrole_yaml.roles : null
   privileges      = var.deploy.resources.database_roles ? local.dbrole_yaml.privileges : null
   schemas         = var.deploy.resources.database_roles ? local.dbrole_db_schema : null
