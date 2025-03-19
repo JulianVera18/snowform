@@ -9,7 +9,7 @@ terraform {
 
 locals {
   all_roles = {
-    for sch in var.schemas:
+    for sch in coalesce(var.schemas, []):
     "${sch.database}.${sch.name}" =>
       yamldecode(templatefile("${var.template_path}/roles/${var.template_name}.yaml.tftpl", {
         schema = upper(sch.name)
@@ -26,7 +26,7 @@ locals {
   ]), [])
 
   grants = try(flatten([
-    for sch in var.schemas: flatten([
+    for sch in try(var.schemas, []): flatten([
       for role, childs in local.all_roles["${sch.database}.${sch.name}"].roles.database: [
         for child in childs: {
           database = "${var.db_prefix}_${var.environment}_${sch.database}"
@@ -38,7 +38,7 @@ locals {
   ]), [])
 
   database_privileges = try(flatten([
-    for sch in var.schemas: flatten([
+    for sch in try(var.schemas, []): flatten([
       for role_name, privs in transpose(local.all_roles["${sch.database}.${sch.name}"].privileges.database): {
         database   = "${var.db_prefix}_${var.environment}_${sch.database}"
         role       = "${var.sc_prefix}_${role_name}"
@@ -59,7 +59,7 @@ locals {
   ]), [])
 
   all_privileges = {
-    for sch in var.schemas:
+    for sch in coalesce(var.schemas, []):
     "${sch.database}.${sch.name}" =>
       yamldecode(templatefile("${var.template_path}/roles/${var.template_name}.yaml.tftpl", {
         schema = upper(sch.name)

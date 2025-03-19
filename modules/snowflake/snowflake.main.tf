@@ -134,8 +134,8 @@ module "account_role" {
 
 module "transfer_ownership" {
   source         = "./transfer_ownership"
-
-  ownership_role = module.account_role.locals.ownership_role
+  count = var.deploy.resources.transfer_ownership ? 1 : 0
+  ownership_role = var.deploy.resources.transfer_ownership ? module.account_role.locals.ownership_role : null
   environment    = var.environment
   wh_prefix      = var.wh_prefix
   db_prefix      = var.db_prefix
