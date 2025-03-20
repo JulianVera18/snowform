@@ -29,6 +29,22 @@ privileges:
       DELETE:	[${schema}_DB_W]
     views:
       SELECT:	[${schema}_DB_R]
+    procedures:
+      USAGE: [${schema}_DB_W]
+    stages:
+      USAGE: [${schema}_DB_W]
+      READ: [${schema}_DB_W]
+      WRITE: [${schema}_DB_W]
+    file formats:
+      USAGE: [${schema}_DB_W]
+    dynamic tables:
+      SELECT: [${schema}_DB_R]
+      MONITOR: [${schema}_DB_W]
+      OPERATE: [${schema}_DB_W]
+    tasks:
+      MONITOR: [${schema}_DB_W]
+      OPERATE: [${schema}_DB_W]
+
   future_objects:
     tables:
       SELECT:	[${schema}_DB_R]
@@ -37,3 +53,18 @@ privileges:
       DELETE:	[${schema}_DB_W]
     views:
       SELECT:	[${schema}_DB_R]
+    procedures:
+      USAGE: [${schema}_DB_W]
+    stages:
+      USAGE: [${schema}_DB_W]
+      READ: [${schema}_DB_W]
+      WRITE: [${schema}_DB_W]
+    file formats:
+      USAGE: [${schema}_DB_W]
+    dynamic tables:
+      SELECT: [${schema}_DB_R]
+      MONITOR: [${schema}_DB_W]
+      OPERATE: [${schema}_DB_W]
+    tasks:
+      MONITOR: [${schema}_DB_W]
+      OPERATE: [${schema}_DB_W]

@@ -27,7 +27,6 @@ provider "snowflake" {
 }
 
 locals {
-  # hardcoded
   environment =  var.environment
   ws          = "dwh"
 
